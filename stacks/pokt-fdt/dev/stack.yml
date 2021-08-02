@@ -16,7 +16,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - poktnet
+      - pocket
 
   db:
     image: mongo:latest
@@ -27,7 +27,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - poktnet
+      - pocket
 
   cache:
     image: "redis:alpine"
@@ -37,7 +37,7 @@ services:
     environment:
       - REDIS_REPLICATION_MODE=master
     networks:
-      - poktnet
+      - pocket
 
   metricsdb:
     image: timescale/timescaledb:2.0.2-pg12
@@ -48,20 +48,22 @@ services:
     ports:
       - 5432:5432
     networks:
-      - poktnet
+      - pocket
 
   nodea.dev.pokt:
     networks:
-      - poktnet
+      - pocket
 
   nodeb.dev.pokt:
     networks:
-      - poktnet
+      - pocket
 
   nodec.dev.pokt:
     networks:
-      - poktnet
+      - pocket
 
 networks:
-  poktnet:
+  pocket:
     driver: overlay
+    attachable: true
+

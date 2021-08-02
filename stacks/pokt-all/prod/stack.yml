@@ -29,7 +29,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - pocketjs
       - db
@@ -41,40 +41,40 @@ services:
 
   db:
     networks:
-      - poktnet
+      - pocket
 
   cache:
     networks:
-      - poktnet
+      - pocket
 
   metricsdb:
     networks:
-      - poktnet
+      - pocket
 
   nodea.pokt:
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - ipfs
 
   nodeb.pokt:
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - ipfs
 
   nodec.pokt:
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - ipfs
 
   ipfs:
     networks:
-      - poktnet
+      - pocket
 
 networks:
-  poktnet:
+  pocket:
     driver: overlay
 
 volumes:

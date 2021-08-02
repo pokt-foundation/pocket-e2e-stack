@@ -10,8 +10,8 @@ services:
     volumes:
       - ../data/ipfs:/data/ipfs
     networks:
-      - poktnet
+      - pocket
 
 networks:
-  poktnet:
+  pocket:
     driver: overlay

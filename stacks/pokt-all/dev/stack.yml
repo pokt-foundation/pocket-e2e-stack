@@ -30,7 +30,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - pocketjs
       - db
@@ -42,35 +42,35 @@ services:
 
   db:
     networks:
-      - poktnet
+      - pocket
 
   cache:
     networks:
-      - poktnet
+      - pocket
 
   metricsdb:
     networks:
-      - poktnet
+      - pocket
 
   nodea.dev.pokt:
     networks:
-      - poktnet
+      - pocket
 
   nodeb.dev.pokt:
     networks:
-      - poktnet
+      - pocket
 
   nodec.dev.pokt:
     networks:
-      - poktnet
+      - pocket
 
   ipfs:
     networks:
-      - poktnet
+      - pocket
 
 networks:
-  poktnet:
-    driver: overlay
+  pocket:
+    name: pocket
 
 volumes:
   sourecode.pocketjs.volume:

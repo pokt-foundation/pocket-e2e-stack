@@ -11,7 +11,7 @@ services:
     ports:
       - 3000:3000
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - db
       - cache
@@ -20,29 +20,29 @@ services:
 
   db:
     networks:
-      - poktnet
+      - pocket
 
   cache:
     networks:
-      - poktnet
+      - pocket
 
   metricsdb:
     networks:
-      - poktnet
+      - pocket
 
   fullnode.pokt.dev.local:
     networks:
-      - poktnet
+      - pocket
     depends_on:
       - ipfs
 
   ipfs:
     networks:
-      - poktnet
+      - pocket
 
 networks:
-  poktnet:
-    driver: overlay
+  pocket:
+    name: pocket
 
 volumes:
   shared:

@@ -11,4 +11,4 @@ GATEWAY_REPO_PATH=$GATEWAY_REPO_PATH docker-compose \
   -f $CWD/stacks/pokt-net/dev/stack.yml \
   -f $CWD/stacks/pokt-fdt/dev/stack.yml \
   --project-directory $CWD/ \
-  up
+  up -d

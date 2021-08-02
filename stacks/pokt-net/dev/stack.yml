@@ -26,7 +26,7 @@ services:
       - ${CWD}/data/pokt-net.nodea.pokt.dev:/home/app/.pocket/data
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
     networks:
-      - poktnet
+      - pocket
 
   nodeb.dev.pokt:
     image: poktnetwork/pocket-core:RC-0.6.3-latest-local
@@ -52,7 +52,7 @@ services:
       - ${CWD}/data/pokt-net.nodeb.pokt.dev:/home/app/.pocket/data
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
     networks:
-      - poktnet
+      - pocket
 
   nodec.dev.pokt:
     image: poktnetwork/pocket-core:RC-0.6.3-latest-local
@@ -78,8 +78,8 @@ services:
       - ${CWD}/data/pokt-net.nodec.pokt.dev:/home/app/.pocket/data
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
     networks:
-      - poktnet
+      - pocket
 
 networks:
-  poktnet:
-    driver: overlay
+  pocket:
+    name: pocket
