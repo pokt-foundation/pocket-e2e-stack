@@ -166,7 +166,7 @@
     "pos": {
       "params": {
         "relays_to_tokens_multiplier": "1000",
-        "unstaking_time": "1814400000000000",
+        "unstaking_time": "1814400000000",
         "max_validators": "3",
         "stake_denom": "upokt",
         "stake_minimum": "1000000",
@@ -177,8 +177,8 @@
         "max_jailed_blocks": "1000",
         "max_evidence_age": "60000000000",
         "signed_blocks_window": "100",
-        "min_signed_per_window": "0.500000000000000000",
-        "downtime_jail_duration": "600000000000",
+        "min_signed_per_window": "0.800000000000000000",
+        "downtime_jail_duration": "6000000000",
         "slash_fraction_double_sign": "0.050000000000000000",
         "slash_fraction_downtime": "0.010000000000000000"
       },

@@ -11,6 +11,6 @@ fi
 docker-compose \
   -f $CWD/stacks/pokt-net/dev/stack.yml \
   --project-directory $CWD/ \
-  up \
+  up -d \
   --build \
   --force-recreate
