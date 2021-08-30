@@ -34,7 +34,7 @@
     },
     "application": {
       "params": {
-        "unstaking_time": "1814400000000000",
+        "unstaking_time": "60000000",
         "max_applications": "9223372036854775807",
         "app_stake_minimum": "1000000",
         "base_relays_per_pokt": "100",
@@ -166,7 +166,7 @@
     "pos": {
       "params": {
         "relays_to_tokens_multiplier": "1000",
-        "unstaking_time": "1814400000000",
+        "unstaking_time": "60000000",
         "max_validators": "3",
         "stake_denom": "upokt",
         "stake_minimum": "1000000",
@@ -176,9 +176,9 @@
         "maximum_chains": "15",
         "max_jailed_blocks": "1000",
         "max_evidence_age": "60000000000",
-        "signed_blocks_window": "100",
+        "signed_blocks_window": "10",
         "min_signed_per_window": "0.800000000000000000",
-        "downtime_jail_duration": "6000000000",
+        "downtime_jail_duration": "600000000000",
         "slash_fraction_double_sign": "0.050000000000000000",
         "slash_fraction_downtime": "0.010000000000000000"
       },
@@ -212,7 +212,7 @@
         {
           "address": "35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3",
           "public_key": "abc364918abe9e3966564f60baf74d7ea1c4f3efe92889de066e617989c54283",
-          "jailed": false,
+          "jailed": true,
           "status": 2,
           "tokens": "2000000000",
           "service_url": "http://nodec.pokt:8081",
