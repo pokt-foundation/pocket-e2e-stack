@@ -33,9 +33,6 @@ Available actions:
 - config: _Prints out the resulting docker compose config file_
 ### Launching the pocket foundation stack
 
-<br/>
-
-
 ### 1. Properly configure the gateway
 
 Make sure you are on the `dev/make-use-locally` branch on the gateway repository.
