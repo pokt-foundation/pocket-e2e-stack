@@ -1,12 +1,15 @@
-# This Dockerfile attempts to install dependencies, run the tests and build the pocket-core binary
-# The result of this Dockerfile will put the pocket-core executable in the $GOBIN/bin, which in turn
-# is part of the $PATH
+# Prepares a dockerfile to run a pocket node whose source code will be mounted
+# from the host for local development and hot reloading.
 
 # Dynamically pull Go-lang version for the image
 ARG GOLANG_IMAGE_VERSION=golang:1.16.2-alpine3.13
 
 # First build step to build the app binary
 FROM ${GOLANG_IMAGE_VERSION} AS builder
+
+ARG POCKET_E2E_STACK_RELATIVE_PATH
+ARG POCKET_CORE_REPO_RELATIVE_PATH
+ARG POCKET_NETWORK_TENDERMINT_RELATIVE_PATH
 
 # Install dependencies
 RUN apk -v --update --no-cache add \
@@ -22,8 +25,9 @@ RUN apk -v --update --no-cache add \
 	rm /var/cache/apk/* || true
 
 # Environment and system dependencies setup
-ENV POCKET_PATH=/go/src/github.com/pokt-network/pocket-core/
-ENV TENDERMINT_PATH=/go/src/github.com/pokt-network/tendermint/
+ENV POCKET_ROOT=/go/src/github.com/pokt-network
+ENV POCKET_PATH=${POCKET_ROOT}/pocket-core
+ENV TENDERMINT_PATH=${POCKET_ROOT}/tendermint
 ENV GO111MODULE="on"
 ENV EXECCOMMAND="start --keybase=false --datadir=/home/app/.pocket"
 ENV POCKET_CORE_SEEDS="notparsed"
@@ -31,43 +35,43 @@ ENV POCKET_CORE_KEY="nokeyisparsed"
 ENV POCKET_CORE_ACCOUNT_ADDRESS="noaddressisparsed"
 
 # Create node root directory
+RUN mkdir -p ${POCKET_ROOT}
 RUN mkdir -p ${POCKET_PATH}
-WORKDIR $POCKET_PATH
+RUN mkdir -p ${TENDERMINT_PATH}
+WORKDIR $POCKET_ROOT
 
-# Creating the BRANCH_NAME variable
-ARG BRANCH_NAME="staging"
-
-# Install rest of source code
-COPY . .
+# Copy the source code from the host.
+COPY ${POCKET_CORE_REPO_RELATIVE_PATH} ${POCKET_PATH}
+COPY ${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH} ${TENDERMINT_PATH}
 
 # Copying deps and hot reloading/watch script
-COPY install-deps.sh ./deps.sh
-COPY watch.sh ../
-COPY prepare-tendermint.sh ../
-COPY entrypoint-dev.sh /tmp/
-COPY command.sh /tmp/
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/install-deps.sh ${POCKET_CORE_REPO_RELATIVE_PATH}
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/watch.sh ./
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/prepare-tendermint.sh ./
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/entrypoint-dev.sh /home/app/entrypoint.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/command.sh /home/app/command.sh
 
-# Run tests
-# As the tests were removed recently for the fact that most of them were broken, I commented this line,
-# It should be uncommented as soon as the new tests are available.
-#RUN go test ./tests/...
 RUN apk add --update --no-cache expect bash leveldb-dev
 RUN addgroup -S app \
 	&& adduser -S -G app app
-RUN mv /tmp/entrypoint-dev.sh /home/app/entrypoint.sh && mv /tmp/command.sh /home/app/command.sh
 RUN mkdir -p /home/app/.pocket/config
 RUN chown -R app /home/app/.pocket
 RUN chown -R app /go
 
-# Install project dependencies and builds the binary
-RUN go build -tags cleveldb -o ${GOBIN}/bin/pocket ./app/cmd/pocket_core/main.go
+# TODO(olshansky): Should we not build AFTER updating go.mod? This requires a lengthy `go mod tidy`.
+RUN cd ${POCKET_PATH} \
+	&& go build -tags cleveldb -o ${GOPATH}/bin/pocket app/cmd/pocket_core/main.go
 
-# install reflex and dlv
+# Overwrite go.mod files for local development.
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/go.mod.local $POCKET_ROOT/go.mod.core
+RUN chmod 654 $POCKET_ROOT/go.mod.core
+
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/go.mod.tendermint $POCKET_ROOT/go.mod.tendermint
+RUN chmod 654 $POCKET_ROOT/go.mod.tendermint
+
+# Install reflex and dlv
 RUN go get github.com/cespare/reflex
 RUN go get github.com/go-delve/delve/cmd/dlv@latest
 
-COPY ./go.mod.local ./go.mod
-RUN chmod 654 $POCKET_PATH/go.mod
-
-WORKDIR /go/src/github.com/pokt-network/
 ENTRYPOINT ["/home/app/entrypoint.sh"]
+# ENTRYPOINT ["/bin/bash"]

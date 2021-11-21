@@ -1,4 +1,142 @@
-[{
+[
+  {
     "id": "1111",
     "url": "http://ipfs:5001"
-}]
+  },
+  {
+    "id": "0001",
+    "url": "https://shared-use2.nodes.pokt.network:18081",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0002",
+    "url": "http://165.227.84.122:8332",
+    "basic_auth": {
+      "username": "btcuser",
+      "password": "btcrpc"
+    }
+  },
+  {
+    "id": "0003",
+    "url": "https://shared-use2.nodes.pokt.network:19650",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0004",
+    "url": "https://shared-use2.nodes.pokt.network:18552",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0005",
+    "url": "https://shared-use2.nodes.pokt.network:18553",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0006",
+    "url": "https://shared-use2.nodes.pokt.network:18552",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0009",
+    "url": "https://shared-use2.nodes.pokt.network:18552",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0010",
+    "url": "https://shared-use2.nodes.pokt.network:18552",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0021",
+    "url": "https://shared-use2.nodes.pokt.network:18545",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0022",
+    "url": "https://shared-use2.nodes.pokt.network:18545",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0023",
+    "url": "https://shared-use2.nodes.pokt.network:18557",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0024",
+    "url": "https://shared-use2.nodes.pokt.network:18548",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0025",
+    "url": "https://shared-use2.nodes.pokt.network:18555",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0026",
+    "url": "https://shared-use2.nodes.pokt.network:18556",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0027",
+    "url": "https://shared-use2.nodes.pokt.network:18546",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "0028",
+    "url": "https://shared-use2.nodes.pokt.network:18545",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  },
+  {
+    "id": "000A",
+    "url": "https://shared-use2.nodes.pokt.network:18553",
+    "basic_auth": {
+      "username": "pnfblockchains",
+      "password": ""
+    }
+  }
+]

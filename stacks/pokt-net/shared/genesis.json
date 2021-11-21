@@ -11,9 +11,7 @@
       "max_age": "60000000000"
     },
     "validator": {
-      "pub_key_types": [
-        "ed25519"
-      ]
+      "pub_key_types": ["ed25519"]
     }
   },
   "app_hash": "",
@@ -22,9 +20,7 @@
       "params": {
         "session_node_count": "3",
         "proof_waiting_period": "3",
-        "supported_blockchains": [
-          "1111"
-        ],
+        "supported_blockchains": ["1111"],
         "claim_expiration": "100",
         "replay_attack_burn_multiplier": "3",
         "minimum_number_of_proofs": "1"
@@ -47,9 +43,7 @@
           "address": "4187e3aed3d9ce89aec2519636a599d42c36521a",
           "public_key": "50952e091c442cc891b7238a902dcdb53b6a42ffb21e2678ebc5caad91cc9113",
           "jailed": false,
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "max_relays": "1000000000",
           "status": 2,
           "staked_tokens": "1000000000000",
@@ -59,9 +53,7 @@
           "address": "976f01c2a741c08eff292e8f67f183875826f988",
           "public_key": "60f18be9678468a6c5d2e02510f5de08185926e189ca00d57fd1291a15ffb538",
           "jailed": false,
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "max_relays": "1000000000",
           "status": 2,
           "staked_tokens": "1000000000000",
@@ -208,9 +200,7 @@
           "status": 2,
           "tokens": "1000000000000",
           "service_url": "http://node1.pokt:8081",
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
         {
@@ -220,9 +210,7 @@
           "status": 2,
           "tokens": "1000000000000",
           "service_url": "http://node2.pokt:8081",
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
         {
@@ -232,9 +220,7 @@
           "status": 2,
           "tokens": "1000000000000",
           "service_url": "http://node3.pokt:8081",
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
         {
@@ -244,9 +230,7 @@
           "status": 2,
           "tokens": "1000000000000",
           "service_url": "http://node4.pokt:8081",
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
         {
@@ -256,9 +240,7 @@
           "status": 2,
           "tokens": "1000000000000",
           "service_url": "http://node5.pokt:8081",
-          "chains": [
-            "1111"
-          ],
+          "chains": ["1111"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         }
       ],
