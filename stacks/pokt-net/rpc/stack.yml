@@ -1,0 +1,34 @@
+version: "2.1"
+services:
+    node.rpc.pokt:
+        privileged: true
+        build:
+          context: ${CWD}/docker/pokt-net/rpc
+          args:
+            - BRANCH_NAME=${POCKET_RELEASE_TAG}
+        command: /usr/bin/expect /home/app/.pocket/local_command.sh
+        ports:
+          - 8081:8081
+          - 26657:26657
+        expose:
+          - "8081"
+          - "26657"
+          - "26656"
+          - "46656"
+          - "53"
+        env_file:
+          - ${CWD}/stacks/pokt-net/rpc/.rpc.node.env
+        environment:
+          - RPC_URL=${RPC_URL}
+        networks:
+          - pocket
+        volumes:
+          - ${CWD}/docker/pokt-net/rpc/local_command.sh:/home/app/.pocket/local_command.sh
+          - ${CWD}/stacks/pokt-net/shared/chains.json:/home/app/.pocket/config/chains.json
+          - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
+          - ${CWD}/stacks/pokt-net/rpc/config.json:/home/app/.pocket/config/config.json
+          - ${CWD}/data/pokt-net.node.rpc.pokt:/home/app/.pocket/data
+
+networks:
+    pocket:
+        driver: bridge
