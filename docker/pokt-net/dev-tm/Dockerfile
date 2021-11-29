@@ -34,7 +34,7 @@ ENV POCKET_CORE_SEEDS="notparsed"
 ENV POCKET_CORE_KEY="nokeyisparsed"
 ENV POCKET_CORE_ACCOUNT_ADDRESS="noaddressisparsed"
 
-# Create node root directory
+# Create directories for the source code.
 RUN mkdir -p ${POCKET_ROOT}
 RUN mkdir -p ${POCKET_PATH}
 RUN mkdir -p ${TENDERMINT_PATH}
@@ -45,11 +45,10 @@ COPY ${POCKET_CORE_REPO_RELATIVE_PATH} ${POCKET_PATH}
 COPY ${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH} ${TENDERMINT_PATH}
 
 # Copying deps and hot reloading/watch script
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/install-deps.sh ${POCKET_CORE_REPO_RELATIVE_PATH}
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/watch.sh ./
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/prepare-tendermint.sh ./
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/entrypoint-dev.sh /home/app/entrypoint.sh
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/command.sh /home/app/command.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/watch.sh ./
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/prepare-tendermint.sh ./
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/entrypoint-dev.sh /home/app/entrypoint.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/command.sh /home/app/command.sh
 
 RUN apk add --update --no-cache expect bash leveldb-dev
 RUN addgroup -S app \
@@ -58,15 +57,14 @@ RUN mkdir -p /home/app/.pocket/config
 RUN chown -R app /home/app/.pocket
 RUN chown -R app /go
 
-# TODO(olshansky): Should we not build AFTER updating go.mod? This requires a lengthy `go mod tidy`.
 RUN cd ${POCKET_PATH} \
 	&& go build -tags cleveldb -o ${GOPATH}/bin/pocket app/cmd/pocket_core/main.go
 
 # Overwrite go.mod files for local development.
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/go.mod.local $POCKET_ROOT/go.mod.core
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/go.mod.local $POCKET_ROOT/go.mod.core
 RUN chmod 654 $POCKET_ROOT/go.mod.core
 
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/go.mod.tendermint $POCKET_ROOT/go.mod.tendermint
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/go.mod.tendermint $POCKET_ROOT/go.mod.tendermint
 RUN chmod 654 $POCKET_ROOT/go.mod.tendermint
 
 # Install reflex and dlv
@@ -74,4 +72,3 @@ RUN go get github.com/cespare/reflex
 RUN go get github.com/go-delve/delve/cmd/dlv@latest
 
 ENTRYPOINT ["/home/app/entrypoint.sh"]
-# ENTRYPOINT ["/bin/bash"]

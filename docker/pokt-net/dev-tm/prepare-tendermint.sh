@@ -7,7 +7,7 @@ if [[ ! -f "$POCKET_ROOT/go.mod.tendermint" ]]; then
   go mod download
 fi
 
-if [[ ! -f "$POCKET_ROOT/go.mod.tendermint" ]]; then
+if [[ ! -f "$POCKET_ROOT/go.mod.core" ]]; then
   mv $POCKET_ROOT/go.mod.core $POCKET_PATH/go.mod
   cd $POCKET_PATH
   echo "Installing dependencies for core..."

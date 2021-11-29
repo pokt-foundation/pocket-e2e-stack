@@ -140,6 +140,24 @@ Similarly, bring it down using:
 $ bin/pkt-stack pokt-all ENV down
 ```
 
+### Debugging (by example)
+
+Some configurations such as `pokt-net dev-tm` enable debugging using Delve and support hot reloading.
+
+You can run a debugging stack with this command: `./bin/pokt-net-dev-tm.sh`.
+
+#### Cmdline
+
+```
+dlv connect localhost:1234
+```
+
+#### Goland
+
+Create a new configuration like the following:
+
+![Goland Debug Configs](docs/img/goland_local_debug_configs.png)
+
 ### Configure new accounts
 
 _incoming_
@@ -151,3 +169,5 @@ _incoming_
 ### How to contribute
 
 _incoming_
+
+###

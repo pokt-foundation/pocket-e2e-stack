@@ -12,6 +12,16 @@ function check_required_env_vars() {
   check_env_var "POCKET_CORE_REPOS_PATH"
   check_env_var "POCKET_CORE_REPO_PATH"
   check_env_var "POCKET_NETWORK_TENDERMINT_PATH"
+  check_env_var "POCKET_E2E_STACK_PATH"
+}
+
+# TODO(olshansky): this is a bit hacky so consider refactoring.
+function update_chains_json() {
+  if [[ ! -z ${PNF_USERNAME} && ! -z ${PNF_PASSWORD} ]]; then
+    echo "PNF_USERNAME and PNF_PASSWORD are set so we are going update chains.json"
+    sed "s/\"username\": \"\${PNF_USERNAME}\"/\"username\": \"${PNF_USERNAME}\"/g" stacks/pokt-net/shared/chains.template.json > stacks/pokt-net/shared/chains.local.json
+    sed -i '' "s/\"password\": \"\${PNF_PASSWORD}\"/\"password\": \"${PNF_PASSWORD}\"/g" stacks/pokt-net/shared/chains.local.json
+  fi
 }
 
 function check_docker() {
@@ -32,7 +42,9 @@ function check_docker() {
   fi
 }
 
-# TODO(olshansky): Discuss in PR if these helpers even be committed to the repo (put in a shared reusable space) or discarded.
 check_required_env_vars
 check_docker
+update_chains_json
+
+# Call the pokt-net stack.
 ./bin/pkt-stack pokt-net dev-tm up

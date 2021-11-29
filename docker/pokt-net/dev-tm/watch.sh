@@ -5,8 +5,7 @@ echo "POCKET_CORE_SEEDS: $POCKET_CORE_SEEDS";
 if [ -z $EXECOMMAND ]
 then
   echo "Expecting EXECOMMAND env var, none was exported.";
-  # export EXECCOMMAND="start --seeds $POCKET_CORE_SEEDS --keybase=false --datadir=/home/app/.pocket"
-  export EXECCOMMAND="start --keybase=false --datadir=/home/app/.pocket"
+  export EXECCOMMAND="start --seeds $POCKET_CORE_SEEDS --keybase=false --datadir=/home/app/.pocket"
   echo "Exported $EXECCOMMAND as EXECCOMMAND";
 fi;
 
@@ -19,8 +18,9 @@ fi
 DEBUG_COMMAND() {
   $POCKET_ROOT/prepare-tendermint.sh;
   cd $POCKET_PATH;
-  touch output.dlv;
+
   echo 'starting pocket with dlv...';
+  touch output.dlv;
   dlv debug $POCKET_PATH/app/cmd/pocket_core/main.go \
     --continue \
     --output output.dlv \
@@ -33,6 +33,7 @@ DEBUG_COMMAND() {
 NO_DEBUG_COMMAND() {
   $POCKET_ROOT/prepare-tendermint.sh;
   cd $POCKET_PATH;
+
   echo 'starting pocket without dlv...';
   go run $POCKET_PATH/app/cmd/pocket_core/main.go $EXECCOMMAND
 }
@@ -47,8 +48,7 @@ then
 else
   command="NO_DEBUG_COMMAND"
 fi;
-
-echo $command;
+echo "About to run the folloing command with reflex: `$command`;"
 
 cd $POCKET_ROOT
 reflex \

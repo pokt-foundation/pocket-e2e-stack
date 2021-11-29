@@ -1,5 +1,7 @@
 .env
+.DS_Store
 data/*
 workspace.code-workspace
 *.swp*
+chains.local.json
 
