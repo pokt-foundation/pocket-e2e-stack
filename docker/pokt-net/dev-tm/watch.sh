@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "POCKET_CORE_KEY: $POCKET_CORE_KEY, POCKET_CORE_SEEDS: $POCKET_CORE_SEEDS, POCKET_CORE_PUBLIC_KEY: $POCKET_CORE_PUBLIK_KEY";
+echo "POCKET_CORE_SEEDS: $POCKET_CORE_SEEDS";
+
 if [ -z $EXECOMMAND ]
 then
   echo "Expecting EXECOMMAND env var, none was exported.";
@@ -15,10 +16,11 @@ then
 fi
 
 DEBUG_COMMAND() {
-  $POCKET_PATH/../prepare-tendermint.sh;
+  $POCKET_ROOT/prepare-tendermint.sh;
   cd $POCKET_PATH;
+
+  echo 'starting pocket with dlv...';
   touch output.dlv;
-  echo 'starting...';
   dlv debug $POCKET_PATH/app/cmd/pocket_core/main.go \
     --continue \
     --output output.dlv \
@@ -29,12 +31,12 @@ DEBUG_COMMAND() {
 }
 
 NO_DEBUG_COMMAND() {
-  $POCKET_PATH/../prepare-tendermint.sh;
+  $POCKET_ROOT/prepare-tendermint.sh;
   cd $POCKET_PATH;
-  echo 'starting...';
+
+  echo 'starting pocket without dlv...';
   go run $POCKET_PATH/app/cmd/pocket_core/main.go $EXECCOMMAND
 }
-
 
 export -f DEBUG_COMMAND
 export -f NO_DEBUG_COMMAND
@@ -46,9 +48,9 @@ then
 else
   command="NO_DEBUG_COMMAND"
 fi;
+echo "About to run the folloing command with reflex: `$command`;"
 
-echo $command;
-cd $POCKET_PATH/..
+cd $POCKET_ROOT
 reflex \
   --start-service \
   -r '\.go' \
