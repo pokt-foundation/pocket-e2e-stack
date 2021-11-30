@@ -1,5 +1,23 @@
 #/usr/bin/env bash
 
+source_and_export_env() {
+  CWD=$(pwd)
+  if [[ ! -f "$CWD/.env" ]]; then
+    echo "No .env file was found"
+    exit 1;
+  else
+    echo "Found .env, exporting..."
+  fi
+
+  source .env
+  export CWD=$CWD
+  export POCKET_CORE_REPOS_PATH=$POCKET_CORE_REPOS_PATH
+  export POCKET_CORE_REPO_PATH=$POCKET_CORE_REPO_PATH
+  export POCKET_NETWORK_TENDERMINT_PATH=$POCKET_NETWORK_TENDERMINT_PATH
+  export POCKET_E2E_STACK_PATH=$POCKET_E2E_STACK_PATH
+  export DEBUG=$DEBUG
+}
+
 function check_env_var() {
   local env_value="${!1}"
   if [ -z "${env_value}" ]; then
@@ -9,6 +27,7 @@ function check_env_var() {
 }
 
 function check_required_env_vars() {
+  check_env_var "CWD"
   check_env_var "POCKET_CORE_REPOS_PATH"
   check_env_var "POCKET_CORE_REPO_PATH"
   check_env_var "POCKET_NETWORK_TENDERMINT_PATH"
@@ -42,9 +61,17 @@ function check_docker() {
   fi
 }
 
+source_and_export_env
 check_required_env_vars
 check_docker
 update_chains_json
 
+
+action=$1
 # Call the pokt-net stack.
-./bin/pkt-stack pokt-net dev-tm up
+if [[ -z $action ]];
+then
+  ./bin/pkt-stack pokt-net dev-tm up
+else
+  ./bin/pkt-stack pokt-net dev-tm $action
+fi

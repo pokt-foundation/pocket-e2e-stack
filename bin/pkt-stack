@@ -12,12 +12,8 @@ source .env
 case $STACK in
   "pokt-net")
     echo "Spinning $ACTION $STACK $ENV stack..."
-    CWD=$(pwd) \
-    POCKET_CORE_REPO_PATH=$POCKET_CORE_REPO_PATH \
-    POCKET_NETWORK_TENDERMINT_PATH=$POCKET_NETWORK_TENDERMINT_PATH \
     TAG=$POCKET_RELEASE_TAG \
     SPECIFIC_NODE=$SPECIFIC_NODE \
-    DEBUG=$DEBUG \
     make -f $(pwd)/Makefile pokt-net-$ENV-$ACTION;
     exit 0;
     ;;

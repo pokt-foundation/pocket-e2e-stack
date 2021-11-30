@@ -5,11 +5,11 @@ services:
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
-      dockerfile: pocket-e2e-stack/docker/pokt-net/dev-tm/Dockerfile
+      dockerfile: ./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm
-        - POCKET_CORE_REPO_RELATIVE_PATH=${POCKET_CORE_REPO_RELATIVE_PATH}
-        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
+        - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm
+        - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.nodea.dev.env
@@ -41,11 +41,11 @@ services:
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
-      dockerfile: pocket-e2e-stack/docker/pokt-net/dev-tm/Dockerfile
+      dockerfile: ./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=${POCKET_E2E_STACK_RELATIVE_PATH}
-        - POCKET_CORE_REPO_RELATIVE_PATH=${POCKET_CORE_REPO_RELATIVE_PATH}
-        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
+        - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}
+        - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.nodeb.dev.env
@@ -77,11 +77,11 @@ services:
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
-      dockerfile: pocket-e2e-stack/docker/pokt-net/dev-tm/Dockerfile
+      dockerfile: ./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=${POCKET_E2E_STACK_RELATIVE_PATH}
-        - POCKET_CORE_REPO_RELATIVE_PATH=${POCKET_CORE_REPO_RELATIVE_PATH}
-        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
+        - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}
+        - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.nodec.dev.env
