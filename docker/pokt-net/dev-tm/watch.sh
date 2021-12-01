@@ -3,6 +3,7 @@
 echo "Starting watch.sh..."
 
 echo "POCKET_CORE_SEEDS: $POCKET_CORE_SEEDS";
+echo "POCKET_ADDRESS: $POCKET_ADDRESS";
 
 if [ -z $EXECOMMAND ]
 then
@@ -17,15 +18,19 @@ then
   exit 1;
 fi
 
+
 DEBUG_COMMAND() {
   $POCKET_ROOT/prepare-tendermint.sh;
   cd $POCKET_PATH;
 
+  dlv_file_name="ouput_${POCKET_ADDRESS}.dlv";
+  touch ${dlv_file_name};
+
   echo 'starting pocket with dlv...';
-  touch output.dlv;
+
   dlv debug $POCKET_PATH/app/cmd/pocket_core/main.go \
     --continue \
-    --output output.dlv \
+    --output ${dlv_file_name} \
     --headless \
     --accept-multiclient \
     --listen=:$DEBUG_PORT \

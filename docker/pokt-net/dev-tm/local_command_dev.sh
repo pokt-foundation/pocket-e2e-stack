@@ -16,7 +16,7 @@ if { $env(POCKET_CORE_KEY) eq "" || $env(POCKET_ADDRESS) eq "" } {
     send -- "$env(POCKET_CORE_PASSPHRASE)\n"
     expect eof
     spawn /bin/bash -c "./prepare-tendermint.sh"
-    spawn /bin/bash -c "export POCKET_CORE_SEEDS=$env(POCKET_CORE_SEEDS) && ./watch.sh"
+    spawn /bin/bash -c "export POCKET_CORE_SEEDS=$env(POCKET_CORE_SEEDS) POCKET_ADDRESS=$env(POCKET_ADDRESS) && ./watch.sh "
 }
 
 sleep 1
