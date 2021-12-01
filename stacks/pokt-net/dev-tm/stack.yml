@@ -2,6 +2,7 @@ version: "3.5"
 
 services:
   nodea.dev.pokt:
+    container_name: nodea.dev.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
@@ -38,6 +39,7 @@ services:
       - poktnet
 
   nodeb.dev.pokt:
+    container_name: nodeb.dev.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
@@ -74,6 +76,7 @@ services:
       - poktnet
 
   nodec.dev.pokt:
+    container_name: nodec.dev.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}

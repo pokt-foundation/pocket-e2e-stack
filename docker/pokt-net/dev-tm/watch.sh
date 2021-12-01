@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Starting watch.sh..."
+
 echo "POCKET_CORE_SEEDS: $POCKET_CORE_SEEDS";
 
 if [ -z $EXECOMMAND ]
@@ -48,11 +50,11 @@ then
 else
   command="NO_DEBUG_COMMAND"
 fi;
-echo "About to run the folloing command with reflex: `$command`;"
+
+echo "About to run the following command with reflex: $command"
 
 cd $POCKET_ROOT
 reflex \
   --start-service \
-  -r '\.go' \
+  -r '\.go$' \
   -s -- /bin/bash -c "$command";
-

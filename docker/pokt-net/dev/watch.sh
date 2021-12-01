@@ -1,6 +1,9 @@
 #!/bin/sh
 
+echo "Starting watch.sh..."
+
 echo "POCKET_CORE_KEY: $POCKET_CORE_KEY, POCKET_CORE_SEEDS: $POCKET_CORE_SEEDS, POCKET_CORE_PUBLIC_KEY: $POCKET_CORE_PUBLIK_KEY";
+
 if [ -z $EXECOMMAND ]
 then
   echo "Expecting EXECOMMAND env var, none was exported.";
