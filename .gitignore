@@ -5,3 +5,7 @@ workspace.code-workspace
 *.swp*
 chains.local.json
 
+stacks/pokt-net/full/*
+!stacks/pokt-net/full/up.sh
+!stacks/pokt-net/full/down.sh
+!stacks/pokt-net/full/config.sh
