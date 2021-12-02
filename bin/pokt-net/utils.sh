@@ -1,4 +1,3 @@
-#/usr/bin/env bash
 
 source_and_export_env() {
   CWD=$(pwd)
@@ -23,6 +22,14 @@ function check_env_var() {
   if [ -z "${env_value}" ]; then
     echo "${1} is not set"
     exit 1
+  fi
+}
+
+function quiet_check_env_var() {
+  local env_value="${!1}"
+  if [ -z "${env_value}" ]; then
+    echo "${1} is not set"
+    return 1
   fi
 }
 
@@ -64,17 +71,3 @@ function check_docker() {
   fi
 }
 
-source_and_export_env
-check_required_env_vars
-check_docker
-update_chains_json
-
-
-action=$1
-# Call the pokt-net stack.
-if [[ -z $action ]];
-then
-  ./bin/pkt-stack pokt-net dev-tm up
-else
-  ./bin/pkt-stack pokt-net dev-tm $action
-fi

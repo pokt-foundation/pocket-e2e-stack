@@ -58,6 +58,8 @@ pokt-net-scaffold-up:
 	POCKET_NETWORK_TENDERMINT_PATH=$(POCKET_NETWORK_TENDERMINT_PATH) CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) DEBUG=$(DEBUG) sh ${CWD}/stacks/pokt-net/scaffold/up.sh
 pokt-net-scaffold-down:
 	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/scaffold/down.sh
+pokt-net-scaffold-cleanup:
+	CWD=$(CWD) sh $(CWD)/stacks/pokt-net/scaffold/cleanup.sh
 
 # PNI tendermint development stack.
 pokt-net-dev-tm-up:

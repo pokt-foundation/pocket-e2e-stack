@@ -1,4 +1,5 @@
 .env
+.playground.env
 .DS_Store
 data/*
 workspace.code-workspace
