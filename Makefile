@@ -45,13 +45,13 @@ pokt-net-rpc-config:
 
 ## PNI's playground
 pokt-net-playground-up:
-	POCKET_NETWORK_TENDERMINT_PATH=$(POCKET_NETWORK_TENDERMINT_PATH) CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) DEBUG=$(DEBUG) sh ${CWD}/stacks/pokt-net/full/up.sh
+	POCKET_NETWORK_TENDERMINT_PATH=$(POCKET_NETWORK_TENDERMINT_PATH) CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) DEBUG=$(DEBUG) sh ${CWD}/stacks/pokt-net/playground/up.sh
 pokt-net-playground-down:
-	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/full/down.sh
+	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/playground/down.sh
 pokt-net-playground-config:
-	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/full/config.sh
+	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/playground/config.sh
 pokt-net-playground-cleanup:
-	CWD=$(CWD) sh -c "rm -rf $(CWD)/stacks/pokt-net/full/* && git checkout -- $(CWD)/stacks/pokt-net/full"
+	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/playground/cleanup.sh
 
 ## PNI's playground
 pokt-net-scaffold-up:

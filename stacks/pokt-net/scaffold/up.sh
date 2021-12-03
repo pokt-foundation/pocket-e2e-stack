@@ -8,7 +8,7 @@ create_data_folders_for_nodes() {
   paths=$1
   for i in "${!paths[@]}"
   do
-    create_data_folder $CWD/stacks/pokt-net/full/${paths[i]}
+    create_data_folder $CWD/stacks/pokt-net/playground/${paths[i]}
   done
 }
 

@@ -2,19 +2,14 @@
 
 source ./bin/pokt-net/utils.sh
 
-source_and_export_env
-check_required_env_vars
-check_docker
-update_chains_json
-
-function exiton_non_zero_code() {
+function exit_on_non_zero_code() {
   if [[ $1 != 1 ]]; then
     exit 1;
   fi
 }
 
 function is_playground_scaffolded() {
-  if [[ ! -f "$CWD/stacks/pokt-net/full/docker-compose.yaml" ]]; then
+  if [[ ! -f "$CWD/stacks/pokt-net/playground/docker-compose.yaml" ]]; then
     echo 0;
   else
     echo 1;
@@ -51,8 +46,12 @@ function verify_scaffolding() {
   fi
 }
 
-ACTION=$1
+source_and_export_env
+check_required_env_vars
+check_docker
+update_chains_json
 
+ACTION=$1
 
 case $ACTION in
   "cleanup")

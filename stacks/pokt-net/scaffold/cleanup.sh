@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function get_nodes_data_volumes_paths() {
-  nodes=$(ls $CWD/stacks/pokt-net/full | grep node | awk '{print $1}')
+  nodes=$(ls $CWD/stacks/pokt-net/playground | grep node | awk '{print $1}')
   nodes=${nodes//[[:blank:]]/}
 
   if [[ $nodes == "" ]]; then
@@ -22,18 +22,18 @@ function clean() {
 }
 
 function reset_possible_mistakes() {
-  git checkout -- $CWD/stacks/pokt-net/full/
+  git checkout -- $CWD/stacks/pokt-net/playground/
 }
 
-clean $CWD/stacks/pokt-net/full/
+clean $CWD/stacks/pokt-net/playground/
 paths=$(get_nodes_data_volumes_paths)
 
 if [[ $paths != 0 && ${#paths[@]} != 0 ]]; then
   echo "Leftover data folders detected."
   for i in "${!paths[@]}"
   do
-    clean $CWD/stacks/pokt-net/full/${paths[i]}/data
-    clean $CWD/stacks/pokt-net/full/${paths[i]}
+    clean $CWD/stacks/pokt-net/playground/${paths[i]}/data
+    clean $CWD/stacks/pokt-net/playground/${paths[i]}
   done
 fi
 
