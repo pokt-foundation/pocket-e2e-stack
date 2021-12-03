@@ -51,7 +51,7 @@
     "P2P": {
       "RootDir": "/home/app/.pocket/",
       "ListenAddress": "tcp://0.0.0.0:26656",
-      "ExternalAddress": "http://nodea.dev.pokt:8081",
+      "ExternalAddress": "",
       "Seeds": "",
       "PersistentPeers": "",
       "UPNP": false,
@@ -103,10 +103,10 @@
       "TimeoutPrevoteDelta": 10000000000,
       "TimeoutPrecommit": 30000000000,
       "TimeoutPrecommitDelta": 10000000000,
-      "TimeoutCommit": 1000000000,
+      "TimeoutCommit": 1000000000000,
       "SkipTimeoutCommit": false,
       "CreateEmptyBlocks": true,
-      "CreateEmptyBlocksInterval": 1000000000,
+      "CreateEmptyBlocksInterval": 1000000000000,
       "PeerGossipSleepDuration": 100000000,
       "PeerQueryMaj23SleepDuration": 2000000000
     },

@@ -5,6 +5,7 @@ if [[ ! -f "$POCKET_ROOT/go.mod.tendermint" ]]; then
   cd $TENDERMINT_PATH
   echo "Installing dependencies for tendermint..."
   go mod download
+  # go mod install
 fi
 
 if [[ ! -f "$POCKET_ROOT/go.mod.core" ]]; then
