@@ -132,6 +132,14 @@
     }
   },
   {
+    "id": "0040",
+    "url": "https://shared-use2.nodes.pokt.network:19500",
+    "basic_auth": {
+      "username": "${PNF_USERNAME}",
+      "password": "${PNF_PASSWORD}"
+    }
+  },
+  {
     "id": "000A",
     "url": "https://shared-use2.nodes.pokt.network:18553",
     "basic_auth": {

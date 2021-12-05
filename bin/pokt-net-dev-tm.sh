@@ -40,6 +40,9 @@ function update_chains_json() {
     echo "PNF_USERNAME and PNF_PASSWORD are set so we are going update chains.json"
     sed "s/\"username\": \"\${PNF_USERNAME}\"/\"username\": \"${PNF_USERNAME}\"/g" stacks/pokt-net/shared/chains.template.json > stacks/pokt-net/shared/chains.local.json
     sed -i '' "s/\"password\": \"\${PNF_PASSWORD}\"/\"password\": \"${PNF_PASSWORD}\"/g" stacks/pokt-net/shared/chains.local.json
+  else
+    echo "PNF_USERNAME and PNF_PASSWORD are not set so we are not going update chains.json"
+    cp stacks/pokt-net/shared/chains.template.json > stacks/pokt-net/shared/chains.local.json
   fi
 }
 

@@ -40,18 +40,8 @@
       },
       "applications": [
         {
-          "address": "4187e3aed3d9ce89aec2519636a599d42c36521a",
-          "public_key": "50952e091c442cc891b7238a902dcdb53b6a42ffb21e2678ebc5caad91cc9113",
-          "jailed": false,
-          "chains": ["1111", "0021", "0040"],
-          "max_relays": "1000000000",
-          "status": 2,
-          "staked_tokens": "1000000000000",
-          "unstaking_time": "0001-01-01T00:00:00Z"
-        },
-        {
-          "address": "976f01c2a741c08eff292e8f67f183875826f988",
-          "public_key": "60f18be9678468a6c5d2e02510f5de08185926e189ca00d57fd1291a15ffb538",
+          "address": "4b54c7ef83273bfb8cfd212ce7266de72716604d",
+          "public_key": "eb0cf2a891382677f03c1b080ec270c693dda7a4c3ee4bcac259ad47c5fe0743",
           "jailed": false,
           "chains": ["1111", "0021", "0040"],
           "max_relays": "1000000000",
@@ -194,22 +184,22 @@
       "prevState_validator_powers": null,
       "validators": [
         {
-          "address": "fcf719ca739dccbc281b12bc0d671aaa7a015848",
-          "public_key": "ec69e25c0f2d79e252c1fe0eb8ae07c3a3d8ff7bd616d736f2ded2e9167488b2",
-          "jailed": false,
-          "status": 2,
-          "tokens": "1000000000000",
-          "service_url": "http://node1.pokt:8081",
-          "chains": ["1111", "0021", "0040"],
-          "unstaking_time": "0001-01-01T00:00:00Z"
-        },
-        {
           "address": "4b54c7ef83273bfb8cfd212ce7266de72716604d",
           "public_key": "eb0cf2a891382677f03c1b080ec270c693dda7a4c3ee4bcac259ad47c5fe0743",
           "jailed": false,
           "status": 2,
           "tokens": "1000000000000",
-          "service_url": "http://node2.pokt:8081",
+          "service_url": "http://nodea.dev.pokt:8081",
+          "chains": ["1111", "0021", "0040"],
+          "unstaking_time": "0001-01-01T00:00:00Z"
+        },
+        {
+          "address": "fcf719ca739dccbc281b12bc0d671aaa7a015848",
+          "public_key": "ec69e25c0f2d79e252c1fe0eb8ae07c3a3d8ff7bd616d736f2ded2e9167488b2",
+          "jailed": false,
+          "status": 2,
+          "tokens": "1000000000000",
+          "service_url": "http://nodeb.dev.pokt:8081",
           "chains": ["1111", "0021", "0040"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
@@ -219,7 +209,17 @@
           "jailed": false,
           "status": 2,
           "tokens": "1000000000000",
-          "service_url": "http://node3.pokt:8081",
+          "service_url": "http://nodec.dev.pokt:8081",
+          "chains": ["1111", "0021", "0040"],
+          "unstaking_time": "0001-01-01T00:00:00Z"
+        },
+        {
+          "address": "f81896be1964df0537a81274b4d2c9604124449e",
+          "public_key": "440d87986346d7f5edeb12921d6ad4782b3d92d84344afe030220d02071cc8ae",
+          "jailed": false,
+          "status": 2,
+          "tokens": "1000000000000",
+          "service_url": "http://noded.dev.pokt:8081",
           "chains": ["1111", "0021", "0040"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         }
