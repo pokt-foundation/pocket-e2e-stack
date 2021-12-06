@@ -12,8 +12,13 @@ create_data_folders_for_nodes() {
   done
 }
 
+
 export POCKET_CORE_REPOS_PATH=$POCKET_CORE_REPOS_PATH
 export POCKET_E2E_STACK_RELATIVE_PATH=$(basename -a $POCKET_E2E_STACK_PATH)
+
+
+echo "Copying playground .env to proper path..."
+cp $CWD/.playground.env $CWD/playground/.env
 
 docker-compose \
   -f $CWD/stacks/pokt-net/scaffold/stack.yml \
@@ -21,9 +26,6 @@ docker-compose \
   up \
   --build \
   --force-recreate
-
-echo "Copying playground .env to proper path..."
-cp $CWD/.playground.env $CWD/playground/.env
 
 nodes=$(ls $CWD/stacks/pokt-net/full | grep node | awk '{print $1}')
 paths=($(echo $nodes | tr " " "\n"))

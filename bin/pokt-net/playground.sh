@@ -84,7 +84,7 @@ case $ACTION in
     ;;
 
   *)
-    echo "Undetermined action=${ACTION}..."
+    echo "Undetermined action="${ACTION}"..."
     echo "Attempting to run action=${ACTION}"
     ./bin/pkt-stack pokt-net playground $ACTION
     ;;

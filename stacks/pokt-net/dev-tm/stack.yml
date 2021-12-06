@@ -11,7 +11,7 @@ services:
         - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm
         - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
-    command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
+    command: "/usr/bin/expect /home/app/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.node1.env
     environment:
@@ -29,9 +29,8 @@ services:
       - "1234"
     volumes:
       - ${CWD}/data/pokt-net.nodea.pokt.dev:/home/app/.pocket/data
-      - ${CWD}/docker/pokt-net/dev-tm/local_command_dev.sh:/home/app/.pocket/local_command_dev.sh
-      - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
-      - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
+      - ${CWD}/stacks/pokt-net/dev-tm/config/config.nodea.dev.json:/home/app/.pocket/config/config.json
+      - ${CWD}/stacks/pokt-net/shared/chains.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
       - "${POCKET_NETWORK_TENDERMINT_PATH}:/go/src/github.com/pokt-network/tendermint"
@@ -48,7 +47,7 @@ services:
         - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm
         - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
-    command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
+    command: "/usr/bin/expect /home/app/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.node2.env
     environment:
@@ -66,9 +65,8 @@ services:
       - "1235"
     volumes:
       - ${CWD}/data/pokt-net.nodeb.pokt.dev:/home/app/.pocket/data
-      - ${CWD}/docker/pokt-net/dev-tm/local_command_dev.sh:/home/app/.pocket/local_command_dev.sh
-      - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
-      - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
+      - ${CWD}/stacks/pokt-net/dev-tm/config/config.nodeb.dev.json:/home/app/.pocket/config/config.json
+      - ${CWD}/stacks/pokt-net/shared/chains.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
       - "${POCKET_NETWORK_TENDERMINT_PATH}:/go/src/github.com/pokt-network/tendermint"
@@ -85,7 +83,7 @@ services:
         - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm
         - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
-    command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
+    command: "/usr/bin/expect /home/app/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.node3.env
     environment:
@@ -103,7 +101,6 @@ services:
       - "1236"
     volumes:
       - ${CWD}/data/pokt-net.nodec.pokt.dev:/home/app/.pocket/data
-      - ${CWD}/docker/pokt-net/dev-tm/local_command_dev.sh:/home/app/.pocket/local_command_dev.sh
       - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
       - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
@@ -122,7 +119,7 @@ services:
         - POCKET_E2E_STACK_RELATIVE_PATH=./${POCKET_E2E_STACK_RELATIVE_PATH}/docker/pokt-net/dev-tm
         - POCKET_CORE_REPO_RELATIVE_PATH=./${POCKET_CORE_REPO_RELATIVE_PATH}
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
-    command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
+    command: "/usr/bin/expect /home/app/local_command_dev.sh"
     env_file:
       - ${CWD}/stacks/pokt-net/dev-tm/.node4.env
     environment:
@@ -140,7 +137,6 @@ services:
       - "1237"
     volumes:
       - ${CWD}/data/pokt-net.noded.pokt.dev:/home/app/.pocket/data
-      - ${CWD}/docker/pokt-net/dev-tm/local_command_dev.sh:/home/app/.pocket/local_command_dev.sh
       - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
       - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json

@@ -49,6 +49,7 @@ COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/watch.sh ./
 COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/prepare-tendermint.sh ./
 COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/entrypoint-dev.sh /home/app/entrypoint.sh
 COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/command.sh /home/app/command.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/local_command_dev.sh /home/app/local_command_dev.sh
 
 RUN apk add --update --no-cache expect bash leveldb-dev
 RUN addgroup -S app \
