@@ -28,9 +28,9 @@ services:
       - "46656"
       - "1234"
     volumes:
-      - ${CWD}/data/pokt-net.nodea.pokt.dev:/home/app/.pocket/data
-      - ${CWD}/stacks/pokt-net/dev-tm/config/config.nodea.dev.json:/home/app/.pocket/config/config.json
-      - ${CWD}/stacks/pokt-net/shared/chains.json:/home/app/.pocket/config/chains.json
+      - ${CWD}/data/pokt-net.node1.data:/home/app/.pocket/data
+      - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
+      - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
       - "${POCKET_NETWORK_TENDERMINT_PATH}:/go/src/github.com/pokt-network/tendermint"
@@ -64,9 +64,9 @@ services:
       - "46656"
       - "1235"
     volumes:
-      - ${CWD}/data/pokt-net.nodeb.pokt.dev:/home/app/.pocket/data
-      - ${CWD}/stacks/pokt-net/dev-tm/config/config.nodeb.dev.json:/home/app/.pocket/config/config.json
-      - ${CWD}/stacks/pokt-net/shared/chains.json:/home/app/.pocket/config/chains.json
+      - ${CWD}/data/pokt-net.node2.data:/home/app/.pocket/data
+      - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
+      - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
       - "${POCKET_CORE_REPO_PATH}:/go/src/github.com/pokt-network/pocket-core"
       - "${POCKET_NETWORK_TENDERMINT_PATH}:/go/src/github.com/pokt-network/tendermint"
@@ -100,7 +100,7 @@ services:
       - "46656"
       - "1236"
     volumes:
-      - ${CWD}/data/pokt-net.nodec.pokt.dev:/home/app/.pocket/data
+      - ${CWD}/data/pokt-net.node3.data:/home/app/.pocket/data
       - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
       - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json
@@ -136,7 +136,7 @@ services:
       - "46656"
       - "1237"
     volumes:
-      - ${CWD}/data/pokt-net.noded.pokt.dev:/home/app/.pocket/data
+      - ${CWD}/data/pokt-net.node4.data:/home/app/.pocket/data
       - ${CWD}/stacks/pokt-net/dev-tm/config/config.json:/home/app/.pocket/config/config.json
       - ${CWD}/stacks/pokt-net/shared/chains.local.json:/home/app/.pocket/config/chains.json
       - ${CWD}/stacks/pokt-net/shared/genesis.json:/home/app/.pocket/config/genesis.json

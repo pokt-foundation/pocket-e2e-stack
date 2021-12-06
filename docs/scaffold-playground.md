@@ -1,4 +1,4 @@
-# Scaffolding a fully fledged pocket network stack 
+# Scaffolding a fully fledged pocket network stack
 
 _Useful for creating a localnet, a testnet, and even a production set of nodes for mainnet_
 
@@ -6,24 +6,28 @@ _Useful for creating a localnet, a testnet, and even a production set of nodes f
 
 1. [Docker](https://docker.io)
 2. [Docker-compose](https://docs.docker.com/compose/)
-2. [Loki's docker plugin](https://grafana.com/docs/loki/latest/clients/docker-driver/)
+3. [Loki's docker plugin](https://grafana.com/docs/loki/latest/clients/docker-driver/)
 
 ## The playground stack
 
-The playground is highly configurable, fully fledged pocket network stack. 
+The playground is highly configurable, fully fledged pocket network stack.
 You can configure your own playground to be however you desire to be. Although the playground comes with deployment capabilities that can allow you to spawn playgrounds in remote environments, this will not be covered as part of pocket-e2e-stack for the moment.
 
-To learn more about the playground, visit the [github repository](https://github.com/pokt-network/playground)
+To learn more about the playground, visit the [github repository](https://github.com/pokt-network/playground).
 
 #### 1. Configuration
 
 1. To configure you playground, start by:
+
 ```
+$ git submodule update --init --recursive
 $ cp .playground.env.example .playground.env
 ```
+
 _Yes, naming is important and not naming the .env like this will produce unexpected behavior_
 
 2. Open your `.playground.env` and start putting in your desired configuration:
+
 ```
 DOMAIN=mainnet.pokt.network
 NODE_PREFIX=node # Pocket nodes will take this prefix
@@ -51,14 +55,17 @@ MONITORING_DOMAIN=monitoring.lab.mainnet.pokt.network
 If you interested in knowing how to trigger scaffolding seperately, keep on reading. For the most part, it will be managed for you, so you can skip to 4.
 
 To scaffold your playground, run:
+
 ```bash
 $ ./bin/pokt-net/playground scaffold
 ```
+
 4. Run your configured/scaffolded playground
 
 First, run:
+
 ```bash
-SCAFFOLD=1 ./bin/pokt-net/playground up
+SCAFFOLD=1 ./bin/pokt-net/playground.sh up
 ```
 
 SCAFFOLD=1 will scaffold your playground, setting it to 0 will skip scaffolding.
@@ -68,11 +75,11 @@ This will generate your pokt-net fullstack according to the configuration specif
 5. If you've had scaffolded your playground before and want to just launch it again, run:
 
 ```
-$ ./bin/pokt-net/playground up
+$ ./bin/pokt-net/playground.sh up
 ```
 
 6. To bring down your playground stack, run:
 
 ```bash
-$ ./bin/pokt-net/playground down
+$ ./bin/pokt-net/playground.sh down
 ```

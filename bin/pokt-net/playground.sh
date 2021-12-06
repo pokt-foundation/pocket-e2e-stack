@@ -40,7 +40,7 @@ function verify_scaffolding() {
     else
       echo "Playground scaffolding already exists!";
       echo "Either set SCAFFOLD to 0 or cleanup your old scaffolding before you generator a new one";
-      echo "To do so: run ./bin/pokt-net/playground cleanup"
+      echo "To do so: run ./bin/pokt-net/playground.sh cleanup"
       return 1;
     fi
   fi
@@ -78,7 +78,7 @@ case $ACTION in
     verify_scaffolding
     if [[ $SCAFFOLD == 1 && $? == 0 ]]; then
       ./bin/pkt-stack pokt-net scaffold up
-    else
+    fi
       ./bin/pkt-stack pokt-net playground up
     fi
     ;;
