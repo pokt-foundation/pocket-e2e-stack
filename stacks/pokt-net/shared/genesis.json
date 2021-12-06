@@ -189,7 +189,7 @@
           "jailed": false,
           "status": 2,
           "tokens": "1000000000000",
-          "service_url": "http://nodea.dev.pokt:8081",
+          "service_url": "http://node1.pokt:8081",
           "chains": ["1111", "0021", "0040"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
@@ -199,7 +199,7 @@
           "jailed": false,
           "status": 2,
           "tokens": "1000000000000",
-          "service_url": "http://nodeb.dev.pokt:8081",
+          "service_url": "http://node2.pokt:8081",
           "chains": ["1111", "0021", "0040"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
@@ -209,7 +209,7 @@
           "jailed": false,
           "status": 2,
           "tokens": "1000000000000",
-          "service_url": "http://nodec.dev.pokt:8081",
+          "service_url": "http://node3.pokt:8081",
           "chains": ["1111", "0021", "0040"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         },
@@ -219,7 +219,7 @@
           "jailed": false,
           "status": 2,
           "tokens": "1000000000000",
-          "service_url": "http://noded.dev.pokt:8081",
+          "service_url": "http://node4.pokt:8081",
           "chains": ["1111", "0021", "0040"],
           "unstaking_time": "0001-01-01T00:00:00Z"
         }

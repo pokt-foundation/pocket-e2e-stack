@@ -1,15 +1,14 @@
 version: "3.5"
 
 services:
-
-  nodea.dev.pokt:
+  node1.pokt:
     image: poktnetwork/pocket-core:RC-0.6.3-latest-local
     build:
       context: ${POCKET_CORE_REPO_PATH}
       dockerfile: ${CWD}/docker/pokt-net/dev/Dockerfile
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev/.nodea.dev.env
+      - ${CWD}/stacks/pokt-net/dev/.node1.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1234
@@ -32,14 +31,14 @@ services:
     networks:
       - poktnet
 
-  nodeb.dev.pokt:
+  node2.pokt:
     image: poktnetwork/pocket-core:RC-0.6.3-latest-local
     build:
       context: ${POCKET_CORE_REPO_PATH}
       dockerfile: ${CWD}/docker/pokt-net/dev/Dockerfile
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev/.nodeb.dev.env
+      - ${CWD}/stacks/pokt-net/dev/.node2.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1235
@@ -62,14 +61,14 @@ services:
     networks:
       - poktnet
 
-  nodec.dev.pokt:
+  node3.pokt:
     image: poktnetwork/pocket-core:RC-0.6.3-latest-local
     build:
       context: ${POCKET_CORE_REPO_PATH}
       dockerfile: ${CWD}/docker/pokt-net/dev/Dockerfile
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev/.nodec.dev.env
+      - ${CWD}/stacks/pokt-net/dev/.node3.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1236

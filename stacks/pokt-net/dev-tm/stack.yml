@@ -1,8 +1,8 @@
 version: "3.5"
 
 services:
-  nodea.dev.pokt:
-    container_name: nodea.dev.pokt
+  node1.pokt:
+    container_name: node1.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
@@ -13,7 +13,7 @@ services:
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev-tm/.nodea.dev.env
+      - ${CWD}/stacks/pokt-net/dev-tm/.node1.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1234
@@ -38,8 +38,8 @@ services:
     networks:
       - poktnet
 
-  nodeb.dev.pokt:
-    container_name: nodeb.dev.pokt
+  node2.pokt:
+    container_name: node2.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
@@ -50,7 +50,7 @@ services:
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev-tm/.nodeb.dev.env
+      - ${CWD}/stacks/pokt-net/dev-tm/.node2.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1235
@@ -75,8 +75,8 @@ services:
     networks:
       - poktnet
 
-  nodec.dev.pokt:
-    container_name: nodec.dev.pokt
+  node3.pokt:
+    container_name: node3.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
@@ -87,7 +87,7 @@ services:
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev-tm/.nodec.dev.env
+      - ${CWD}/stacks/pokt-net/dev-tm/.node3.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1236
@@ -112,8 +112,8 @@ services:
     networks:
       - poktnet
 
-  noded.dev.pokt:
-    container_name: noded.dev.pokt
+  node4.pokt:
+    container_name: node4.pokt
     image: poktnetwork/pocket-core:dev-tm-local
     build:
       context: ${POCKET_CORE_REPOS_PATH}
@@ -124,7 +124,7 @@ services:
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH}
     command: "/usr/bin/expect /home/app/.pocket/local_command_dev.sh"
     env_file:
-      - ${CWD}/stacks/pokt-net/dev-tm/.noded.dev.env
+      - ${CWD}/stacks/pokt-net/dev-tm/.node4.env
     environment:
       - DEBUG=${DEBUG}
       - DEBUG_PORT=1237

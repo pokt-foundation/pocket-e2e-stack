@@ -43,7 +43,7 @@
     "P2P": {
       "RootDir": "/home/app/.pocket/",
       "ListenAddress": "tcp://0.0.0.0:26656",
-      "ExternalAddress": "http://nodec.dev.pokt:8081",
+      "ExternalAddress": "http://node2.pokt:8081",
       "Seeds": "",
       "PersistentPeers": "",
       "UPNP": false,
@@ -127,7 +127,7 @@
     "max_evidence_cache_entries": 1,
     "max_session_cache_entries": 1,
     "json_sort_relay_responses": true,
-    "remote_cli_url": "http://nodec.dev.pokt:8081",
+    "remote_cli_url": "http://node2.pokt:8081",
     "user_agent": "",
     "validator_cache_size": 1,
     "application_cache_size": 1,
