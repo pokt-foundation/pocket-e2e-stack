@@ -1,16 +1,15 @@
-version: '3.5'
+version: "3.5"
 
 services:
   installer:
     container_name: scaffolder.playground.pokt
     image: poktnetwork/scaffolder
     build:
-      context: ${POCKET_CORE_REPOS_PATH}/${POCKET_E2E_STACK_RELATIVE_PATH}/playground
+      context: ${CWD}/playground
       dockerfile: ./Dockerfile
     env_file:
       - ./.env
     environment:
       - RUN_DOCKER_COMPOSE=false
     volumes:
-      - ${POCKET_CORE_REPOS_PATH}/${POCKET_E2E_STACK_RELATIVE_PATH}/stacks/pokt-net/full:/pocket
-
+      - ${CWD}/stacks/pokt-net/full:/pocket

@@ -3,7 +3,7 @@
 source ./bin/pokt-net/utils.sh
 
 function exit_on_non_zero_code() {
-  if [[ $1 != 1 ]]; then
+  if [[ $1 != 0 ]]; then
     exit 1;
   fi
 }
@@ -31,12 +31,14 @@ function verify_scaffolding() {
     else
       echo "Playground scaffolding was found";
       echo "Carrying on";
+      return 0;
     fi
   else
     echo "SCAFFOLDING is set to true, the playground will be generated according to the provided config.";
     if [[ scaffolding_exists -eq 0 ]]; then
       echo "No playground scaffolding was found.";
       echo "Carrying on";
+      return 0;
     else
       echo "Playground scaffolding already exists!";
       echo "Either set SCAFFOLD to 0 or cleanup your old scaffolding before you generator a new one";
@@ -75,12 +77,13 @@ case $ACTION in
     ;;
 
   "up")
+    export SCAFFOLD=0
     verify_scaffolding
-    if [[ $SCAFFOLD == 1 && $? == 0 ]]; then
-      ./bin/pkt-stack pokt-net scaffold up
+    if [[ $? != 1 ]]; then
+      echo "No stack is scaffolded. You must run `./bin/pkt-stack pokt-net scaffold up` first."
+      exit 1;
     fi
-      ./bin/pkt-stack pokt-net playground up
-    fi
+    ./bin/pkt-stack pokt-net playground up
     ;;
 
   *)
