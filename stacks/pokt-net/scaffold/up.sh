@@ -19,8 +19,8 @@ echo "Copying playground .env to proper path..."
 cp $CWD/.playground.env $CWD/playground/.env
 
 # TODO: Make both of these more configurable.
-cp $CWD/stacks/pokt-net/shared/genesis.json $CWD/playground/data/genesis.json
-cp $CWD/stacks/pokt-net/shared/chains.local.json $CWD/playground/data/genesis.json
+cp $CWD/stacks/pokt-net/shared/genesis.json $CWD/playground/templates/genesis.json
+cp $CWD/stacks/pokt-net/shared/chains.local.json $CWD/playground/templates/chains.json
 
 nodes=$(ls $CWD/stacks/pokt-playground | grep node | awk '{print $1}')
 paths=($(echo $nodes | tr " " "\n"))
