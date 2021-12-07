@@ -9,7 +9,7 @@ function exit_on_non_zero_code() {
 }
 
 function is_playground_scaffolded() {
-  if [[ ! -f "$CWD/stacks/pokt-net/playground/docker-compose.yaml" ]]; then
+  if [[ ! -f "$CWD/stacks/pokt-playground/docker-compose.yaml" ]]; then
     echo 0;
   else
     echo 1;

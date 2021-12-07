@@ -50,35 +50,35 @@ SINGLE_MODE=False
 MONITORING_DOMAIN=monitoring.lab.mainnet.pokt.network
 ```
 
-3. Scaffold your configuration
+4. [Recommended] Customize Genesis File
 
-If you interested in knowing how to trigger scaffolding seperately, keep on reading. For the most part, it will be managed for you, so you can skip to 4.
+This step is optional, but we recommend you use the preconfigured genesis file below for local development:
+
+```bash
+cp stacks/pokt-net/shared/genesis.json playground/templates/genesis.json
+```
+
+stacks/pokt-net/shared/genesis.json
+
+5. Scaffold your configuration
 
 To scaffold your playground, run:
 
 ```bash
-$ ./bin/pokt-net/playground scaffold
+$ ./bin/pokt-net/playground.sh scaffold
 ```
+
+This will generate your pokt playground stack according to the configuration specified in `.playground.env` and spin them up.
 
 4. Run your configured/scaffolded playground
 
 First, run:
 
 ```bash
-SCAFFOLD=1 ./bin/pokt-net/playground.sh up
+./bin/pokt-net/playground.sh up
 ```
 
-SCAFFOLD=1 will scaffold your playground, setting it to 0 will skip scaffolding.
-
-This will generate your pokt-net fullstack according to the configuration specified in `.playground.env` and spin them up.
-
-5. If you've had scaffolded your playground before and want to just launch it again, run:
-
-```
-$ ./bin/pokt-net/playground.sh up
-```
-
-6. To bring down your playground stack, run:
+5. To bring down your playground stack, run:
 
 ```bash
 $ ./bin/pokt-net/playground.sh down

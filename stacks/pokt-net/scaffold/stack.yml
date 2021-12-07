@@ -12,4 +12,4 @@ services:
     environment:
       - RUN_DOCKER_COMPOSE=false
     volumes:
-      - ${CWD}/stacks/pokt-net/full:/pocket
+      - ${CWD}/stacks/pokt-playground:/pocket

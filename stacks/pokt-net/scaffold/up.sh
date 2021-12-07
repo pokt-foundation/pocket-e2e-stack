@@ -8,7 +8,7 @@ create_data_folders_for_nodes() {
   paths=$1
   for i in "${!paths[@]}"
   do
-    create_data_folder $CWD/stacks/pokt-net/playground/${paths[i]}
+    create_data_folder $CWD/stacks/pokt-playground/${paths[i]}
   done
 }
 
@@ -18,7 +18,11 @@ export POCKET_E2E_STACK_RELATIVE_PATH=$(basename -a $POCKET_E2E_STACK_PATH)
 echo "Copying playground .env to proper path..."
 cp $CWD/.playground.env $CWD/playground/.env
 
-nodes=$(ls $CWD/stacks/pokt-net/full | grep node | awk '{print $1}')
+# TODO: Make both of these more configurable.
+cp $CWD/stacks/pokt-net/shared/genesis.json $CWD/playground/data/genesis.json
+cp $CWD/stacks/pokt-net/shared/chains.local.json $CWD/playground/data/genesis.json
+
+nodes=$(ls $CWD/stacks/pokt-playground | grep node | awk '{print $1}')
 paths=($(echo $nodes | tr " " "\n"))
 
 echo "Creating data folders for the generated nodes..."

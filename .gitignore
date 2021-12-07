@@ -5,10 +5,4 @@ data/*
 workspace.code-workspace
 *.swp*
 chains.local.json
-stacks/pokt-net/full/*
-
-stacks/pokt-net/playground/*
-!stacks/pokt-net/playground/up.sh
-!stacks/pokt-net/playground/down.sh
-!stacks/pokt-net/playground/config.sh
-
+stacks/pokt-playground/*

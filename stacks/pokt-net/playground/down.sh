@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 docker-compose \
-  -f $CWD/stacks/pokt-net/full/docker-compose.yaml \
-  --project-directory $CWD/stacks/pokt-net/full \
-  --env-file $CWD/stacks/pokt-net/full/.env \
+  -f $CWD/stacks/pokt-playground/docker-compose.yaml \
+  --project-directory $CWD/stacks/pokt-playground \
+  --env-file $CWD/stacks/pokt-playground/.env \
   rm --stop --force
