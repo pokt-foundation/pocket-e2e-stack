@@ -49,7 +49,7 @@ COPY command.sh /tmp/
 # As the tests were removed recently for the fact that most of them were broken, I commented this line,
 # It should be uncommented as soon as the new tests are available.
 #RUN go test ./tests/...
-RUN apk add --update --no-cache expect bash leveldb-dev
+RUN apk add --update --no-cache expect bash leveldb-dev build-base
 RUN addgroup -S app \
 	&& adduser -S -G app app
 RUN mv /tmp/entrypoint-dev.sh /home/app/entrypoint.sh && mv /tmp/command.sh /home/app/command.sh
