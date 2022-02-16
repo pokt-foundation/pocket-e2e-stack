@@ -45,7 +45,6 @@ case $STACK in
     POCKETJS_REPO_PATH=$POCKETJS_REPO_PATH \
     GATEWAY_REPO_PATH=$GATEWAY_REPO_PATH \
     POCKET_CORE_REPO_PATH=$POCKET_CORE_REPO_PATH \
-    ENV=$ENV \
     make -f $(pwd)/Makefile pokt-all-$ENV-$ACTION;
     exit 0;
     ;;
