@@ -23,6 +23,10 @@ $ bin/pkt-stack pokt-fdt prod-local up
 
 <h2 align="center">Dependencies</h2>
 
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Make](https://www.gnu.org/software/make/) (please upgrade your pre-installed Make version to `GNU Make 3.81`)
+
 In order to run this tool, you first need to clone the following repositories:
 
 - [portal-api](https://github.com/pokt-foundation/portal-api)
