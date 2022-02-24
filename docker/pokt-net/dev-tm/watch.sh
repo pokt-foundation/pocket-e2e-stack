@@ -18,7 +18,6 @@ then
   exit 1;
 fi
 
-
 DEBUG_COMMAND() {
   $POCKET_ROOT/prepare-tendermint.sh;
   cd $POCKET_PATH;
@@ -34,7 +33,9 @@ DEBUG_COMMAND() {
     --headless \
     --accept-multiclient \
     --listen=:$DEBUG_PORT \
-    --api-version=2 -- $EXECCOMMAND
+    --api-version=2 \
+    -- \
+    $EXECCOMMAND
 }
 
 NO_DEBUG_COMMAND() {

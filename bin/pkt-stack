@@ -12,6 +12,7 @@ source .env
 case $STACK in
   "pokt-net")
     echo "Spinning $ACTION $STACK $ENV stack..."
+    CWD=$(pwd) \
     TAG=$POCKET_RELEASE_TAG \
     SPECIFIC_NODE=$SPECIFIC_NODE \
     make -f $(pwd)/Makefile pokt-net-$ENV-$ACTION;
