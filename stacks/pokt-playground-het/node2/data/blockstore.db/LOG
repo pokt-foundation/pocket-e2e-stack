@@ -1,0 +1,83 @@
+=============== Apr 15, 2022 (UTC) ===============
+17:28:40.005301 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:28:40.117402 db@open opening
+17:28:40.148778 version@stat F·[] S·0B[] Sc·[]
+17:28:40.177843 db@janitor F·2 G·0
+17:28:40.180065 db@open done T·55.898334ms
+=============== Apr 15, 2022 (UTC) ===============
+17:38:09.664640 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:38:09.678725 version@stat F·[] S·0B[] Sc·[]
+17:38:09.679481 db@open opening
+17:38:09.681231 journal@recovery F·1
+17:38:09.682933 journal@recovery recovering @1
+17:38:09.701745 memdb@flush created L0@2 N·56 S·11KiB ",v56":"blo..ore,v6"
+17:38:09.706567 version@stat F·[1] S·11KiB[11KiB] Sc·[0.25]
+17:38:09.733207 db@janitor F·3 G·0
+17:38:09.734345 db@open done T·53.407167ms
+=============== Apr 15, 2022 (UTC) ===============
+17:56:40.186297 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+17:56:40.225529 version@stat F·[1] S·11KiB[11KiB] Sc·[0.25]
+17:56:40.232260 db@open opening
+17:56:40.234123 journal@recovery F·1
+17:56:40.237787 journal@recovery recovering @3
+17:56:40.257982 version@stat F·[1] S·11KiB[11KiB] Sc·[0.25]
+17:56:40.312765 db@janitor F·3 G·0
+17:56:40.314060 db@open done T·80.632333ms
+=============== Apr 15, 2022 (UTC) ===============
+18:12:11.145942 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:12:11.164262 version@stat F·[1] S·11KiB[11KiB] Sc·[0.25]
+18:12:11.165677 db@open opening
+18:12:11.166818 journal@recovery F·1
+18:12:11.169545 journal@recovery recovering @5
+18:12:11.190649 memdb@flush created L0@7 N·35 S·8KiB ",v92":"blo..ore,v63"
+18:12:11.197318 version@stat F·[2] S·20KiB[20KiB] Sc·[0.50]
+18:12:11.224504 db@janitor F·4 G·0
+18:12:11.225620 db@open done T·58.943208ms
+=============== Apr 15, 2022 (UTC) ===============
+18:15:57.908800 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:15:57.928516 version@stat F·[2] S·20KiB[20KiB] Sc·[0.50]
+18:15:57.931231 db@open opening
+18:15:57.933707 journal@recovery F·1
+18:15:57.934516 journal@recovery recovering @8
+18:15:57.945540 memdb@flush created L0@10 N·7 S·1KiB ",v100":"blo..ore,v99"
+18:15:57.949672 version@stat F·[3] S·21KiB[21KiB] Sc·[0.75]
+18:15:57.977548 db@janitor F·5 G·0
+18:15:57.979208 db@open done T·45.623959ms
+=============== Apr 15, 2022 (UTC) ===============
+18:24:30.335296 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:24:30.345669 version@stat F·[3] S·21KiB[21KiB] Sc·[0.75]
+18:24:30.349038 db@open opening
+18:24:30.350832 journal@recovery F·1
+18:24:30.352390 journal@recovery recovering @11
+18:24:30.365647 memdb@flush created L0@13 N·7 S·1KiB ",v108":"blo..ore,v107"
+18:24:30.369136 version@stat F·[4] S·23KiB[23KiB] Sc·[1.00]
+18:24:30.391008 db@janitor F·6 G·0
+18:24:30.392227 db@open done T·41.694083ms
+18:24:30.392367 table@compaction L0·4 -> L1·0 S·23KiB Q·109
+18:24:30.452521 table@build created L1@16 N·77 S·23KiB ",v108":"blo..ore,v107"
+18:24:30.454129 version@stat F·[0 1] S·23KiB[0B 23KiB] Sc·[0.00 0.00]
+18:24:30.456827 table@compaction committed F-3 S+567B Ke·0 D·28 T·60.970334ms
+18:24:30.460436 table@remove removed @10
+18:24:30.463312 table@remove removed @7
+18:24:30.467098 table@remove removed @2
+=============== Apr 15, 2022 (UTC) ===============
+18:39:45.657428 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:39:45.675788 version@stat F·[0 1] S·23KiB[0B 23KiB] Sc·[0.00 0.00]
+18:39:45.678079 db@open opening
+18:39:45.680236 journal@recovery F·1
+18:39:45.681761 journal@recovery recovering @14
+18:39:45.708825 memdb@flush created L0@17 N·28 S·5KiB ",v137":"blo..ore,v115"
+18:39:45.726397 version@stat F·[1 1] S·29KiB[5KiB 23KiB] Sc·[0.25 0.00]
+18:39:45.753543 db@janitor F·5 G·1
+18:39:45.755175 db@janitor removing table-13
+18:39:45.759385 db@open done T·79.664875ms
+=============== Apr 15, 2022 (UTC) ===============
+18:53:22.285926 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+18:53:22.303367 version@stat F·[1 1] S·29KiB[5KiB 23KiB] Sc·[0.25 0.00]
+18:53:22.304343 db@open opening
+18:53:22.305779 journal@recovery F·1
+18:53:22.306583 journal@recovery recovering @18
+18:53:22.327203 memdb@flush created L0@20 N·42 S·8KiB ",v180":"blo..ore,v144"
+18:53:22.331023 version@stat F·[2 1] S·38KiB[14KiB 23KiB] Sc·[0.50 0.00]
+18:53:22.363022 db@janitor F·5 G·0
+18:53:22.363943 db@open done T·58.38375ms

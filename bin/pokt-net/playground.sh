@@ -86,6 +86,16 @@ case $ACTION in
     ./bin/pkt-stack pokt-net playground up
     ;;
 
+  "up-het")
+    export SCAFFOLD=0
+    verify_scaffolding
+    if [[ $? != 1 ]]; then
+      echo "No stack is scaffolded. You must run `./bin/pkt-stack pokt-net scaffold up` first."
+      exit 1;
+    fi
+    ./bin/pkt-stack pokt-net playground up-het
+    ;;
+
   *)
     echo "Undetermined action="${ACTION}"..."
     echo "Attempting to run action=${ACTION}"

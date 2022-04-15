@@ -1,0 +1,288 @@
+version: "3.8"
+
+# Logging is currently not being used due to this issue: https://github.com/grafana/loki/issues/2361
+x-loki: &loki-logging
+  driver: loki
+  options:
+    max-file: "10"
+    max-size: 10m
+    loki-url: "http://monitoring.dev.pokt:3100/loki/api/v1/push"
+
+services:
+  node1.dev.pokt:
+    container_name: node1.dev.pokt
+    command: /usr/bin/expect /home/app/local_command_dev.sh
+    image: playground/pocket-core-other-branch:latest
+    build:
+      context: /Users/olshansky/workspace/pocket
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm-het/Dockerfile
+      args:
+        - HOT_RELOAD
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm-het
+        - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
+    ports:
+      - 8082:8081
+      - 26658:26657
+      - 1235:1234
+    expose:
+      - "8081"
+      - "26656"
+      - "26657"
+      - "46656"
+      - "1234"
+    environment:
+      POCKET_BRANCH: jonathan
+      POCKET_CORE_KEY: 5efedbbc3d3d6f82d78eaf21258c81f462f3a25268be0018d4d75e1a4787bd14eb0cf2a891382677f03c1b080ec270c693dda7a4c3ee4bcac259ad47c5fe0743
+      POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
+      POCKET_CORE_PASSPHRASE: yo
+      POCKET_ADDRESS: 4b54c7ef83273bfb8cfd212ce7266de72716604d
+      DEBUG: 1
+      DEBUG_PORT: 1234
+    networks:
+      - poktnet
+    volumes:
+      - ./node1/data/:/home/app/.pocket/data/ # Blockchain data
+      - ./node1/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
+      - ./node1/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
+      - /Users/olshansky/workspace/pocket/pocket-core:/go/src/github.com/placeholder/pokt-network/pocket-core
+      - /Users/olshansky/workspace/pocket/tendermint:/go/src/github.com/pokt-network/tendermint
+
+  node2.dev.pokt:
+    container_name: node2.dev.pokt
+    command: /usr/bin/expect /home/app/local_command_dev.sh
+    image: playground/pocket-core:latest
+    build:
+      context: /Users/olshansky/workspace/pocket
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm-het/Dockerfile
+      args:
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm-het
+        - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
+    ports:
+      - 8083:8081
+      - 26659:26657
+      - 1236:1234
+    expose:
+      - "8081"
+      - "26656"
+      - "26657"
+      - "46656"
+      - "1234"
+    environment:
+      POCKET_CORE_KEY: f1f0b5ab116830b0bd0f8eb24544fe90580f80940cf05bd90297826de91ebc4aec69e25c0f2d79e252c1fe0eb8ae07c3a3d8ff7bd616d736f2ded2e9167488b2
+      POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
+      POCKET_CORE_PASSPHRASE: yo
+      POCKET_ADDRESS: fcf719ca739dccbc281b12bc0d671aaa7a015848
+      DEBUG: 1
+      DEBUG_PORT: 1234
+    networks:
+      - poktnet
+    volumes:
+      - ./node2/data/:/home/app/.pocket/data/ # Blockchain data
+      - ./node2/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
+      - ./node2/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
+      - /Users/olshansky/workspace/pocket/pocket-core:/go/src/github.com/pokt-network/pocket-core
+      - /Users/olshansky/workspace/pocket/tendermint:/go/src/github.com/pokt-network/tendermint
+
+  node3.dev.pokt:
+    container_name: node3.dev.pokt
+    command: /usr/bin/expect /home/app/local_command_dev.sh
+    image: playground/pocket-core:latest
+    build:
+      context: /Users/olshansky/workspace/pocket
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm-het/Dockerfile
+      args:
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm-het
+        - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
+    ports:
+      - 8084:8081
+      - 26660:26657
+      - 1237:1234
+    expose:
+      - "8081"
+      - "26656"
+      - "26657"
+      - "46656"
+      - "1234"
+    environment:
+      POCKET_CORE_KEY: 91d19aec06f084ca925b15641fae86111d7e2fe4a0eed1f26b28bf6c65156b8aabc364918abe9e3966564f60baf74d7ea1c4f3efe92889de066e617989c54283
+      POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
+      POCKET_CORE_PASSPHRASE: yo
+      POCKET_ADDRESS: 35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3
+      DEBUG: 1
+      DEBUG_PORT: 1234
+    networks:
+      - poktnet
+    volumes:
+      - ./node3/data/:/home/app/.pocket/data/ # Blockchain data
+      - ./node3/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
+      - ./node3/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
+      - /Users/olshansky/workspace/pocket/pocket-core:/go/src/github.com/pokt-network/pocket-core
+      - /Users/olshansky/workspace/pocket/tendermint:/go/src/github.com/pokt-network/tendermint
+
+  node4.dev.pokt:
+    container_name: node4.dev.pokt
+    command: /usr/bin/expect /home/app/local_command_dev.sh
+    image: playground/pocket-core:latest
+    build:
+      context: /Users/olshansky/workspace/pocket
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm-het/Dockerfile
+      args:
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm-het
+        - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
+        - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
+    ports:
+      - 8085:8081
+      - 26661:26657
+      - 1238:1234
+    expose:
+      - "8081"
+      - "26656"
+      - "26657"
+      - "46656"
+      - "1234"
+    environment:
+      POCKET_CORE_KEY: 4c758ab70a4ae1b254be684243809c34d739dcb30fcdeae63bb2317b38301298440d87986346d7f5edeb12921d6ad4782b3d92d84344afe030220d02071cc8ae
+      POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
+      POCKET_CORE_PASSPHRASE: yo
+      POCKET_ADDRESS: f81896be1964df0537a81274b4d2c9604124449e
+      DEBUG: 1
+      DEBUG_PORT: 1234
+    networks:
+      - poktnet
+    volumes:
+      - ./node4/data/:/home/app/.pocket/data/ # Blockchain data
+      - ./node4/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
+      - ./node4/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
+      - /Users/olshansky/workspace/pocket/pocket-core:/go/src/github.com/pokt-network/pocket-core
+      - /Users/olshansky/workspace/pocket/tendermint:/go/src/github.com/pokt-network/tendermint
+
+  gitops: # GITOPS
+    image: zeeke/docker-compose-gitops
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/git
+
+  loki:
+    image: grafana/loki:2.2.1
+    container_name: loki
+    volumes:
+      - ./monitoring/loki/config.yaml:/etc/loki/local-config.yaml
+      - ./monitoring/loki/data:/data/loki
+    expose:
+      - 3100
+    ports:
+      - "3100:3100"
+    command: --config.file=/etc/loki/local-config.yaml
+    restart: unless-stopped
+    networks:
+      - poktnet
+
+  proxy:
+    image: nginx:alpine
+    container_name: proxy
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - ./proxy/conf.d:/etc/nginx/templates
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./proxy/certbot/conf:/etc/nginx/ssl
+      - ./proxy/certbot/data:/var/www/certbot
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - prometheus
+      - grafana
+    networks:
+      - poktnet
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    user: "1000"
+    restart: unless-stopped
+    volumes:
+      - ./monitoring/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
+      - ./monitoring/prometheus/data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yaml"
+    expose:
+      - 9090
+    networks:
+      - poktnet
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    user: "104"
+    expose:
+      - 3000
+    volumes:
+      - ./monitoring/grafana/data:/var/lib/grafana
+      - ./monitoring/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
+      - ./monitoring/grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_DATABASE_TYPE=sqlite3
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+      - GF_SERVER_DOMAIN=monitoring.dev.pokt
+      - GF_USERS_DEFAULT_THEME=dark
+      - GF_SMTP_ENABLED=false
+      - GF_SMTP_HOST=smtp.gmail.com:587
+    networks:
+      - poktnet
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    expose:
+      - 9093
+    volumes:
+      - ./monitoring/alertmanager/:/etc/alertmanager/
+    command:
+      - "--config.file=/etc/alertmanager/config.yaml"
+      - "--storage.path=/alertmanager"
+    networks:
+      - poktnet
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    expose:
+      - 9100
+    networks:
+      - poktnet
+
+  cadvisor:
+    image: google/cadvisor:latest
+    privileged: true
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8181:8080"
+    expose:
+      - 8080
+    networks:
+      - poktnet
+
+networks:
+  poktnet:
+    driver: overlay
+    attachable: true
