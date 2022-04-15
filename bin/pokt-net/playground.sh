@@ -86,6 +86,10 @@ case $ACTION in
     ./bin/pkt-stack pokt-net playground up
     ;;
 
+  "up-het")
+    ./bin/pkt-stack pokt-net playground up-het
+    ;;
+
   *)
     echo "Undetermined action="${ACTION}"..."
     echo "Attempting to run action=${ACTION}"

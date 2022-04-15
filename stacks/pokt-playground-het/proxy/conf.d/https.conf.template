@@ -1,0 +1,310 @@
+resolver 127.0.0.11 valid=10s; # 127.0.0.1 comes from /etc/resolv.conf on the nginx container
+
+
+	server {
+	     listen [::]:80;
+	     listen 80 ;
+	     resolver 127.0.0.11 ipv6=off valid=5s;
+
+	     server_name node1.${DOMAIN}; 
+	     
+	     location /v1 {
+	       set $node1 node1:8081;
+	       proxy_pass http://$node1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+	     
+	     location /v1/client/relay {
+
+	       set $node1 node1:8081;
+	       proxy_pass http://$node1/v1/client/relay$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/challenge {
+	       set $node1 node1:8081;
+	       proxy_pass http://$node1/v1/client/challenge$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/dispatch {
+
+	       set $node1 node1:8081;
+	       proxy_pass http://$node1/v1/client/dispatch$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+
+	}
+
+	server {
+	     listen [::]:80;
+	     listen 80 ;
+	     resolver 127.0.0.11 ipv6=off valid=5s;
+
+	     server_name node2.${DOMAIN}; 
+	     
+	     location /v1 {
+	       set $node2 node2:8081;
+	       proxy_pass http://$node2;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+	     
+	     location /v1/client/relay {
+
+	       set $node2 node2:8081;
+	       proxy_pass http://$node2/v1/client/relay$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/challenge {
+	       set $node2 node2:8081;
+	       proxy_pass http://$node2/v1/client/challenge$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/dispatch {
+
+	       set $node2 node2:8081;
+	       proxy_pass http://$node2/v1/client/dispatch$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+
+	}
+
+	server {
+	     listen [::]:80;
+	     listen 80 ;
+	     resolver 127.0.0.11 ipv6=off valid=5s;
+
+	     server_name node3.${DOMAIN}; 
+	     
+	     location /v1 {
+	       set $node3 node3:8081;
+	       proxy_pass http://$node3;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+	     
+	     location /v1/client/relay {
+
+	       set $node3 node3:8081;
+	       proxy_pass http://$node3/v1/client/relay$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/challenge {
+	       set $node3 node3:8081;
+	       proxy_pass http://$node3/v1/client/challenge$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/dispatch {
+
+	       set $node3 node3:8081;
+	       proxy_pass http://$node3/v1/client/dispatch$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+
+	}
+
+	server {
+	     listen [::]:80;
+	     listen 80 ;
+	     resolver 127.0.0.11 ipv6=off valid=5s;
+
+	     server_name node4.${DOMAIN}; 
+	     
+	     location /v1 {
+	       set $node4 node4:8081;
+	       proxy_pass http://$node4;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+	     
+	     location /v1/client/relay {
+
+	       set $node4 node4:8081;
+	       proxy_pass http://$node4/v1/client/relay$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/challenge {
+	       set $node4 node4:8081;
+	       proxy_pass http://$node4/v1/client/challenge$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+
+	     }
+	     
+	     location /v1/client/dispatch {
+
+	       set $node4 node4:8081;
+	       proxy_pass http://$node4/v1/client/dispatch$1;
+	       proxy_redirect off;
+
+	       proxy_set_header X-Real-IP $remote_addr;
+	       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	       proxy_set_header Upgrade $http_upgrade;
+	       proxy_set_header Connection 'upgrade';
+	       proxy_set_header Host $host;
+	       proxy_cache_bypass $http_upgrade;
+	       proxy_http_version 1.1;
+
+	     }
+
+	}
+
+
+server {
+     listen 80 default_server;
+     resolver 127.0.0.11 ipv6=off valid=5s;
+
+     server_name monitoring.${DOMAIN}; 
+
+     location / {
+       set $backend_servers grafana:3000;
+       proxy_pass http://$backend_servers;
+       auth_basic off;
+
+     }
+}
+ 

@@ -46,6 +46,8 @@ pokt-net-rpc-config:
 ## PNI's playground
 pokt-net-playground-up:
 	POCKET_NETWORK_TENDERMINT_PATH=$(POCKET_NETWORK_TENDERMINT_PATH) CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) DEBUG=$(DEBUG) sh ${CWD}/stacks/pokt-net/playground/up.sh
+pokt-net-playground-up-het:
+	POCKET_NETWORK_TENDERMINT_PATH=$(POCKET_NETWORK_TENDERMINT_PATH) CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) DEBUG=$(DEBUG) sh ${CWD}/stacks/pokt-net/playground/up-het.sh
 pokt-net-playground-down:
 	CWD=$(CWD) POCKET_CORE_REPO_PATH=$(POCKET_CORE_REPO_PATH) sh ${CWD}/stacks/pokt-net/playground/down.sh
 pokt-net-playground-config:
