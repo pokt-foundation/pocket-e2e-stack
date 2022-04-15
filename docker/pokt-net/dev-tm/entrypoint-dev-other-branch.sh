@@ -12,4 +12,6 @@ if [ -n "${POCKET_CORE_CHAINS}" ] ; then
     echo "${POCKET_CORE_CHAINS}" > /home/app/.pocket/config/chains.json
 fi
 
+# git checkout ${POCKET_BRANCH}
+
 /usr/bin/expect /home/app/command.sh $@
