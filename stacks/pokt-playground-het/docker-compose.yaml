@@ -12,12 +12,12 @@ services:
   node1.dev.pokt:
     container_name: node1.dev.pokt
     command: /usr/bin/expect /home/app/local_command_dev.sh
-    image: playground/pocket-core-other-branch:latest
+    image: playground/pocket-core-het-node:latest
     build:
       context: /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling
-      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm/DockerfileOtherBranch
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-het/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-het
         - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
     ports:
@@ -31,7 +31,7 @@ services:
       - "46656"
       - "1234"
     environment:
-      POCKET_BRANCH: jonathan
+      POCKET_BRANCH: jacob
       POCKET_CORE_KEY: 5efedbbc3d3d6f82d78eaf21258c81f462f3a25268be0018d4d75e1a4787bd14eb0cf2a891382677f03c1b080ec270c693dda7a4c3ee4bcac259ad47c5fe0743
       POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
       POCKET_CORE_PASSPHRASE: yo
@@ -43,20 +43,18 @@ services:
     volumes:
       - ./node1/data/:/home/app/.pocket/data/ # Blockchain data
       - ./node1/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
-      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
       - ./node1/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/pocket-core:/go/src/github.com/pokt-network/pocket-core
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/tendermint:/go/src/github.com/pokt-network/tendermint
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
 
   node2.dev.pokt:
     container_name: node2.dev.pokt
     command: /usr/bin/expect /home/app/local_command_dev.sh
-    image: playground/pocket-core:latest
+    image: playground/pocket-core-het-node:latest
     build:
       context: /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling
-      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm/Dockerfile
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-het/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-het
         - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
     ports:
@@ -70,6 +68,7 @@ services:
       - "46656"
       - "1234"
     environment:
+      POCKET_BRANCH: issue-#1414
       POCKET_CORE_KEY: f1f0b5ab116830b0bd0f8eb24544fe90580f80940cf05bd90297826de91ebc4aec69e25c0f2d79e252c1fe0eb8ae07c3a3d8ff7bd616d736f2ded2e9167488b2
       POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
       POCKET_CORE_PASSPHRASE: yo
@@ -81,20 +80,18 @@ services:
     volumes:
       - ./node2/data/:/home/app/.pocket/data/ # Blockchain data
       - ./node2/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
-      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
       - ./node2/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/pocket-core:/go/src/github.com/pokt-network/pocket-core
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/tendermint:/go/src/github.com/pokt-network/tendermint
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
 
   node3.dev.pokt:
     container_name: node3.dev.pokt
     command: /usr/bin/expect /home/app/local_command_dev.sh
-    image: playground/pocket-core:latest
+    image: playground/pocket-core-het-node:latest
     build:
       context: /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling
-      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm/Dockerfile
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-het/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-het
         - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
     ports:
@@ -108,6 +105,7 @@ services:
       - "46656"
       - "1234"
     environment:
+      POCKET_BRANCH: issue-#1414
       POCKET_CORE_KEY: 91d19aec06f084ca925b15641fae86111d7e2fe4a0eed1f26b28bf6c65156b8aabc364918abe9e3966564f60baf74d7ea1c4f3efe92889de066e617989c54283
       POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
       POCKET_CORE_PASSPHRASE: yo
@@ -119,20 +117,18 @@ services:
     volumes:
       - ./node3/data/:/home/app/.pocket/data/ # Blockchain data
       - ./node3/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
-      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
       - ./node3/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/pocket-core:/go/src/github.com/pokt-network/pocket-core
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/tendermint:/go/src/github.com/pokt-network/tendermint
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
 
   node4.dev.pokt:
     container_name: node4.dev.pokt
     command: /usr/bin/expect /home/app/local_command_dev.sh
-    image: playground/pocket-core:latest
+    image: playground/pocket-core-het-node:latest
     build:
       context: /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling
-      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-tm/Dockerfile
+      dockerfile: ./pocket-e2e-stack/docker/pokt-net/dev-het/Dockerfile
       args:
-        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-tm
+        - POCKET_E2E_STACK_RELATIVE_PATH=./pocket-e2e-stack/docker/pokt-net/dev-het
         - POCKET_CORE_REPO_RELATIVE_PATH=./pocket-core
         - POCKET_NETWORK_TENDERMINT_RELATIVE_PATH=./tendermint
     ports:
@@ -146,6 +142,7 @@ services:
       - "46656"
       - "1234"
     environment:
+      POCKET_BRANCH: issue-#1414
       POCKET_CORE_KEY: 4c758ab70a4ae1b254be684243809c34d739dcb30fcdeae63bb2317b38301298440d87986346d7f5edeb12921d6ad4782b3d92d84344afe030220d02071cc8ae
       POCKET_CORE_SEEDS: 4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656
       POCKET_CORE_PASSPHRASE: yo
@@ -157,10 +154,8 @@ services:
     volumes:
       - ./node4/data/:/home/app/.pocket/data/ # Blockchain data
       - ./node4/config.json:/home/app/.pocket/config/config.json # Pocket Configuration file
-      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
       - ./node4/chains.json:/home/app/.pocket/config/chains.json # Pocket chains file
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/pocket-core:/go/src/github.com/pokt-network/pocket-core
-      - /Users/olshansky/workspace/pocket/red-crisis-v0-local-tooling/tendermint:/go/src/github.com/pokt-network/tendermint
+      - ./genesis.json:/home/app/.pocket/config/genesis.json # Pocket Genesis file
 
   gitops: # GITOPS
     image: zeeke/docker-compose-gitops

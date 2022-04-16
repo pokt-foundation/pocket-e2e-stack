@@ -58,9 +58,9 @@ else
   command="NO_DEBUG_COMMAND"
 fi;
 
-echo "About to run the following command with reflex: $command"
-
 git --git-dir ./pocket-core/.git checkout $POCKET_BRANCH
+
+echo "About to run the following command with reflex: $command"
 
 reflex \
   --start-service \

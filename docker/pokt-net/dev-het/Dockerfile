@@ -25,7 +25,7 @@ RUN apk -v --update --no-cache add \
 	rm /var/cache/apk/* || true
 
 # Environment and system dependencies setup
-ENV POCKET_ROOT_PLACEHOLDER=/go/src/github.com/placeholder/pokt-network
+ENV POCKET_ROOT_TEMP=/go/src/github.com/temp/pokt-network
 ENV POCKET_ROOT=/go/src/github.com/pokt-network
 ENV POCKET_PATH=${POCKET_ROOT}/pocket-core
 ENV TENDERMINT_PATH=${POCKET_ROOT}/tendermint
@@ -36,7 +36,7 @@ ENV POCKET_CORE_KEY="nokeyisparsed"
 ENV POCKET_CORE_ACCOUNT_ADDRESS="noaddressisparsed"
 
 # Create directories for the source code.
-RUN mkdir -p ${POCKET_ROOT_PLACEHOLDER}
+RUN mkdir -p ${POCKET_ROOT_TEMP}
 RUN mkdir -p ${POCKET_ROOT}
 RUN mkdir -p ${POCKET_PATH}
 RUN mkdir -p ${TENDERMINT_PATH}
@@ -47,10 +47,10 @@ COPY ${POCKET_CORE_REPO_RELATIVE_PATH} ${POCKET_PATH}
 COPY ${POCKET_NETWORK_TENDERMINT_RELATIVE_PATH} ${TENDERMINT_PATH}
 
 # Copying deps and hot reloading/watch script
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/watch-other-branch.sh ./watch.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/watch.sh ./watch.sh
 COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/prepare-tendermint.sh ./
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/entrypoint-dev-other-branch.sh /home/app/entrypoint.sh
-COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/command-other-branch.sh /home/app/command.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/entrypoint-dev.sh /home/app/entrypoint.sh
+COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/command.sh /home/app/command.sh
 COPY ${POCKET_E2E_STACK_RELATIVE_PATH}/local_command_dev.sh /home/app/local_command_dev.sh
 
 RUN apk add --update --no-cache expect bash leveldb-dev
@@ -60,8 +60,7 @@ RUN mkdir -p /home/app/.pocket/config
 RUN chown -R app /home/app/.pocket
 RUN chown -R app /go
 
-RUN cp -rT ${POCKET_ROOT_PLACEHOLDER} ${POCKET_ROOT}
-	# && git checkout ${POCKET_BRANCH}
+RUN cp -rT ${POCKET_ROOT_TEMP} ${POCKET_ROOT}
 
 RUN cd ${POCKET_PATH} \
 	&& go build -tags cleveldb -o ${GOPATH}/bin/pocket app/cmd/pocket_core/main.go
