@@ -1,0 +1,52 @@
+# Node configurations
+NODE_N=1-4
+NODE_PREFIX=node
+
+# TODO: Can we multiline this for readability while still being parsable by Docker?
+KEYS="[{'name':'node1', 'addr':'4b54c7ef83273bfb8cfd212ce7266de72716604d', 'priv': '5efedbbc3d3d6f82d78eaf21258c81f462f3a25268be0018d4d75e1a4787bd14eb0cf2a891382677f03c1b080ec270c693dda7a4c3ee4bcac259ad47c5fe0743', 'pass':'yo' },{ 'name':'node2', 'addr':'fcf719ca739dccbc281b12bc0d671aaa7a015848', 'priv': 'f1f0b5ab116830b0bd0f8eb24544fe90580f80940cf05bd90297826de91ebc4aec69e25c0f2d79e252c1fe0eb8ae07c3a3d8ff7bd616d736f2ded2e9167488b2', 'pass':'yo' },{ 'name':'node3', 'addr':'35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3', 'priv': '91d19aec06f084ca925b15641fae86111d7e2fe4a0eed1f26b28bf6c65156b8aabc364918abe9e3966564f60baf74d7ea1c4f3efe92889de066e617989c54283', 'pass':'yo' },{ 'name':'node4', 'addr':'f81896be1964df0537a81274b4d2c9604124449e', 'priv': '4c758ab70a4ae1b254be684243809c34d739dcb30fcdeae63bb2317b38301298440d87986346d7f5edeb12921d6ad4782b3d92d84344afe030220d02071cc8ae', 'pass':'yo' }]"
+NODE_PORT=8081
+PEER_PORT=26656
+PEER_PORT_CONSTANT=True
+PEERSISTENT_PEERS=""
+# Block time in Nanoseconds
+BLOCK_TIME=1000000000
+# TODO: Can we multiline this for readability while still being parsable by Docker?
+SEEDS="4b54c7ef83273bfb8cfd212ce7266de72716604d@node1.dev.pokt:26656,fcf719ca739dccbc281b12bc0d671aaa7a015848@node2.dev.pokt:26656,35df1afa3f2156cedaebe2e3a8e831b92c3a5ae3@node3.dev.pokt:26656,f81896be1964df0537a81274b4d2c9604124449e@node4.dev.pokt:26656"
+
+CUSTOM_ARGS="/usr/bin/expect /home/app/local_command_dev.sh"
+
+# Network configurations
+DOMAIN=dev.pokt
+SINGLE_MODE=False
+
+# Monitoring options
+ONLY_MONITORING=False
+USE_MONITORING=True
+MONITORING_DOMAIN=monitoring.dev.pokt
+
+# Snapshot options
+USE_SNAPSHOT=False
+SNAPSHOT_URL=https://link.us1.storjshare.io/raw/jxswez33rp3jebf5sakbycrkksya/pocket-public-blockchains/pocket-network-data-1229-rc-0.6.3.6.tar
+CREATE_SNAPSHOT=False
+USE_UPLINK=False
+UPLINK_KEY=147A7s3UVY6g4DhxdatsM7QMofNBJJfvcq5w9XuYjU2HrmEbr4JSbRy3NQu3mijqk7T8in1PYEAdcf11dd5yhJ4eDAn4UMppBgqcN49f2tHVcGhRV2McpvyTm4U22uXH35h14JA1YXiGdUFDss7ThTnFnPYY8uRTxmtG2UrdW9LZkmuJysNF1sU8anEGcZnGQuYWViAzVx2VwtYTrYQE5CXPQotB2rnGwFaUY9vVeTCKFC8yiwZLHxhPJdZaexrZPbBTaf1xvmuyarMchkxvbn8K7pLXfw7n2xGArJavvRK86Nj1SrRr5ws9ku9i24WbGddKWz4SNaZgUH63Wm65yK8m91kgeHLDhhhR
+
+USE_CUSTOM_GENESIS=True
+USE_CUSTOM_CHAINS=True
+
+POCKET_IMAGE=poktnetwork/pocket:RC-0.7.1
+
+# Development configurations
+RUN_DOCKER_COMPOSE=True
+
+# Local development configurations
+USE_LOCALNET_TEMPLATE=True
+DLV_DEBUG=True
+HOT_RELOAD=True
+POCKET_CORE_REPOS_PATH=REPLACE_ME
+POCKET_CORE_REPO_NAME=pocket-core
+POCKET_NETWORK_TENDERMINT_REPO_NAME=tendermint
+POCKET_E2E_STACK_REPO_NAME=pocket-e2e-stack
+
+# Testing configurations
+INCLUDE_TX_BOT=False
