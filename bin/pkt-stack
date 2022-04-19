@@ -15,6 +15,7 @@ case $STACK in
     CWD=$(pwd) \
     TAG=$POCKET_RELEASE_TAG \
     SPECIFIC_NODE=$SPECIFIC_NODE \
+    POCKET_CORE_REPO_PATH=$POCKET_CORE_REPO_PATH \
     make -f $(pwd)/Makefile pokt-net-$ENV-$ACTION;
     exit 0;
     ;;
